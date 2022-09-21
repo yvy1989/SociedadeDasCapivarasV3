@@ -10,7 +10,7 @@ public class PlayerMov : MonoBehaviour
     public float jumpSpeed = 10f;
     public float gravity = 20.0f;
 
-
+    public GameObject circleCollider;
 
     private Vector3 rotation;
 
