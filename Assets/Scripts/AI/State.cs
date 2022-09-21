@@ -22,6 +22,7 @@ public class State
     protected Transform player;
     protected State nextState;
     protected NavMeshAgent agent;
+    protected Transform initPos;
 
     float visDist = 10f;
     float visAngle = 30f;
