@@ -23,7 +23,7 @@ public class IdleState : State
 
         if (Random.Range(0,100) < 10)
         {
-            nextState = new Patrol(npc, agent, anim, player);
+            //nextState = new Patrol(npc, agent, anim, player);
             stage = EVENT.EXIT;
         }      
     }
