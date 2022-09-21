@@ -22,19 +22,20 @@ public class State
     protected Transform player;
     protected State nextState;
     protected NavMeshAgent agent;
-    protected Transform initPos;
+    protected Vector3 initPos;
 
     float visDist = 10f;
     float visAngle = 30f;
     float atkDist = 3f;
 
-    public State(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player)
+    public State(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos)
     {
         npc = _npc;
         agent = _agent;
         anim = _anim;
         stage = EVENT.ENTER;
         player = _player;
+        initPos = _initPos;
     }
 
     public virtual void Enter() { stage = EVENT.UPDATE; }
