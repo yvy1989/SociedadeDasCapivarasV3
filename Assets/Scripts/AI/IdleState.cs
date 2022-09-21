@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class IdleState : State
 {
-    public IdleState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player)
-                        : base(_npc, _agent, _anim, _player)
+    public IdleState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos)
+                        : base(_npc, _agent, _anim, _player, _initPos)
     {
         name = STATE.IDLE;
     }
@@ -23,7 +23,7 @@ public class IdleState : State
 
         if (Random.Range(0,100) < 10)
         {
-            nextState = new PatrolState(npc, agent, anim, player);
+            nextState = new PatrolState(npc, agent, anim, player, initPos);
             stage = EVENT.EXIT;
         }      
     }
