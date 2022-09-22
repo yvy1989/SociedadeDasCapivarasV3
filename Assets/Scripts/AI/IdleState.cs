@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class IdleState : State
 {
+    float counterFloat = 0;
+
     public IdleState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos)
                         : base(_npc, _agent, _anim, _player, _initPos)
     {
@@ -21,11 +23,21 @@ public class IdleState : State
     {
         base.Update();
 
-        if (Random.Range(0,100) < 10)
+        if (counterFloat >= 2)
         {
-            nextState = new PatrolState(npc, agent, anim, player, initPos);
-            stage = EVENT.EXIT;
-        }      
+            Debug.Log("test");
+            if (Random.Range(0, 100) < 60)
+            {
+                Debug.Log("succeed");
+                nextState = new PatrolState(npc, agent, anim, player, initPos);
+                stage = EVENT.EXIT;
+            }
+            counterFloat = 0;
+        }
+        else
+        {
+            counterFloat += Time.deltaTime;
+        }
     }
 
     public override void Exit()
@@ -33,4 +45,11 @@ public class IdleState : State
         anim.ResetTrigger("isIdle");
         base.Exit();
     }
+
+    /*protected IEnumerator FlipCounterSwitchOnTimeCount(float time)
+    {
+        yield return new WaitForSeconds(time);
+        this.counterSwitch = !this.counterSwitch;
+        yield return null;
+    }*/
 }
