@@ -21,8 +21,7 @@ public class IdleState : State
 
     public override void Update()
     {
-        base.Update();
-
+        //base.Update();
         if (counterFloat >= 2)
         {
             Debug.Log("test");
@@ -37,6 +36,12 @@ public class IdleState : State
         else
         {
             counterFloat += Time.deltaTime;
+        }
+
+        if (CanSeePlayer())
+        {
+            nextState = new PursueState(npc, agent, anim, player, initPos);
+            stage = EVENT.EXIT;
         }
     }
 

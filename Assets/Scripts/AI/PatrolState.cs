@@ -24,10 +24,16 @@ public class PatrolState : State
 
     public override void Update()
     {
-        base.Update();
+        //base.Update();
         if (agent.remainingDistance < 1)
         {
             nextState = new IdleState(npc, agent, anim, player, initPos);
+            stage = EVENT.EXIT;
+        }
+
+        if (CanSeePlayer())
+        {
+            nextState = new PursueState(npc, agent, anim, player, initPos);
             stage = EVENT.EXIT;
         }
     }
