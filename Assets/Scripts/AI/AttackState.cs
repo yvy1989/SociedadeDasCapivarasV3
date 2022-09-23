@@ -24,7 +24,12 @@ public class AttackState : State
 
     public override void Update()
     {
-        //base.Update();
+        Vector3 direction = player.transform.position - npc.transform.position;
+        float angle = Vector3.Angle(direction, npc.transform.forward);
+        direction.y = 0;
+
+        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
+
         if (!CanAttackPlayer())
         {
             nextState = new PursueState(npc, agent, anim, player, initPos);

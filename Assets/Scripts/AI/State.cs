@@ -24,8 +24,8 @@ public class State
     protected NavMeshAgent agent;
     protected Vector3 initPos;
 
-    float visDist = 10f;
-    float visAngle = 30f;
+    float visDist = 15f;
+    float visAngle = 50f;
     float atkDist = 3f;
 
     public State(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos)
@@ -58,7 +58,17 @@ public class State
     {
         Vector3 direction = player.transform.position - npc.transform.position;
         float angle = Vector3.Angle(direction, npc.transform.forward);
-        if(direction.magnitude <= visDist && angle <= visAngle)
+        if(IsPlayerInVisualDistance() && angle <= visAngle)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsPlayerInVisualDistance()
+    {
+        Vector3 direction = player.transform.position - npc.transform.position;
+        if(direction.magnitude <= visDist)
         {
             return true;
         }

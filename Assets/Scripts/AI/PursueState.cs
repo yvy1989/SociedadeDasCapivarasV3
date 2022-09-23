@@ -22,21 +22,16 @@ public class PursueState : State
 
     public override void Update()
     {
-        //base.Update();
         agent.SetDestination(player.transform.position);
-        Debug.Log("DestinationSet");
-        Debug.Log("Parado" + agent.isStopped);
-        if (agent.hasPath)
+        if (CanAttackPlayer())
         {
-            Debug.Log("HasPath");
-            if (CanAttackPlayer())
+            nextState = new AttackState(npc, agent, anim, player, initPos);
+            stage = EVENT.EXIT;
+        }
+        else if (agent.hasPath)
+        { 
+            if (!IsPlayerInVisualDistance())
             {
-                nextState = new AttackState(npc, agent, anim, player, initPos);
-                stage = EVENT.EXIT;
-            }
-            else if (!CanSeePlayer())
-            {
-                Debug.Log("Can't see player");
                 nextState = new IdleState(npc, agent, anim, player, initPos);
                 stage = EVENT.EXIT;
             }
