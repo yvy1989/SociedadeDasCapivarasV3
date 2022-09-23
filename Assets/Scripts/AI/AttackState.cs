@@ -17,15 +17,19 @@ public class AttackState : State
 
     public override void Enter()
     {
+        Debug.Log("Attacking");
         anim.SetTrigger("isAttacking");
-        
         base.Enter();
     }
 
     public override void Update()
     {
         //base.Update();
-        
+        if (!CanAttackPlayer())
+        {
+            nextState = new PursueState(npc, agent, anim, player, initPos);
+            stage = EVENT.EXIT;
+        }
     }
 
     public override void Exit()

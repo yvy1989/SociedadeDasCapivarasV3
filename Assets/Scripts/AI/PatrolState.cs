@@ -17,6 +17,7 @@ public class PatrolState : State
 
     public override void Enter()
     {
+        Debug.Log("Patrolling");
         anim.SetTrigger("isWalking");
         agent.SetDestination(new Vector3(initPos.x + Random.Range(-range, range), initPos.y, initPos.z + Random.Range(-range, range)));
         base.Enter();

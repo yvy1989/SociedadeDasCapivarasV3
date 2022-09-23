@@ -10,13 +10,13 @@ public class PursueState : State
     {
         name = STATE.PURSUE;
         agent.speed = 5f;
-        agent.isStopped = false;
     }
 
     public override void Enter()
     {
+        agent.isStopped = false;
+        Debug.Log("Pursuing");
         anim.SetTrigger("isRunning");
-        
         base.Enter();
     }
 
@@ -24,8 +24,11 @@ public class PursueState : State
     {
         //base.Update();
         agent.SetDestination(player.transform.position);
+        Debug.Log("DestinationSet");
+        Debug.Log("Parado" + agent.isStopped);
         if (agent.hasPath)
         {
+            Debug.Log("HasPath");
             if (CanAttackPlayer())
             {
                 nextState = new AttackState(npc, agent, anim, player, initPos);
@@ -33,6 +36,7 @@ public class PursueState : State
             }
             else if (!CanSeePlayer())
             {
+                Debug.Log("Can't see player");
                 nextState = new IdleState(npc, agent, anim, player, initPos);
                 stage = EVENT.EXIT;
             }
