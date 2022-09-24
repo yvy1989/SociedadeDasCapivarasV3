@@ -12,9 +12,12 @@ GameObject:
   - component: {fileID: 8845406740734653299}
   - component: {fileID: 6711988356425009081}
   - component: {fileID: 8845406740734653298}
-  - component: {fileID: 1865492127874047576}
+  - component: {fileID: -1637199869909892938}
+  - component: {fileID: 7405605054938559205}
+  - component: {fileID: 806640542314827580}
+  - component: {fileID: -8270816423109874870}
   m_Layer: 0
-  m_Name: pedra-2
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,12 +96,28 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5054509555072558700}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.019881207, y: 0.01638941, z: 0.019917902}
   m_Center: {x: 0.00040094508, y: 0.000037182115, z: 0.000295754}
---- !u!114 &1865492127874047576
+--- !u!54 &-1637199869909892938
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054509555072558700}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7405605054938559205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +126,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 5054509555072558700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f05520c9b6bca7f4d8e8007cf201415b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6922fbd397c7e6642a672b9c32d1ca0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 434ebcfff07192d49bcdac5f49a92dd4, type: 2}
+  data: {fileID: 11400000, guid: 1cb3d7423b1bce349a45490c2aa07e6d, type: 2}
+  rb: {fileID: 0}
+--- !u!114 &806640542314827580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054509555072558700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e272d2595ed198747987508e23c98da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8270816423109874870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054509555072558700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e838717dfef206b49a53fb1c20ec0c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: Pedra
