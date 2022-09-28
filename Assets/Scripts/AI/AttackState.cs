@@ -5,10 +5,10 @@ using UnityEngine.AI;
 
 public class AttackState : State
 {
-    float rotationSpeed = 2f;
+    private float attackRotationSpeed = 2f;
 
-    public AttackState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos)
-                        : base(_npc, _agent, _anim, _player, _initPos)
+    public AttackState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos, AI _ai)
+                        : base(_npc, _agent, _anim, _player, _initPos, _ai)
     {
         name = STATE.ATTACK;
         //agent.speed = 5f;
@@ -28,11 +28,11 @@ public class AttackState : State
         float angle = Vector3.Angle(direction, npc.transform.forward);
         direction.y = 0;
 
-        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
+        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * attackRotationSpeed);
 
         if (!CanAttackPlayer())
         {
-            nextState = new PursueState(npc, agent, anim, player, initPos);
+            nextState = new PursueState(npc, agent, anim, player, initPos, ai);
             stage = EVENT.EXIT;
         }
     }

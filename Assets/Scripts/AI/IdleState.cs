@@ -5,10 +5,12 @@ using UnityEngine.AI;
 
 public class IdleState : State
 {
-    float counterFloat = 0;
+    private float idleCooldownCounter = 0f,
+        idleCooldown = 2f,
+        idlePatrolChance = 60f;
 
-    public IdleState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos)
-                        : base(_npc, _agent, _anim, _player, _initPos)
+    public IdleState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos, AI _ai)
+                        : base(_npc, _agent, _anim, _player, _initPos, _ai)
     {
         name = STATE.IDLE;
     }
@@ -24,23 +26,23 @@ public class IdleState : State
     {
         if (CanSeePlayer())
         {
-            nextState = new PursueState(npc, agent, anim, player, initPos);
+            nextState = new PursueState(npc, agent, anim, player, initPos, ai);
             stage = EVENT.EXIT;
         }
-        else if (counterFloat >= 2)
+        else if (idleCooldownCounter >= idleCooldown)
         {
             Debug.Log("test");
-            if (Random.Range(0, 100) < 60)
+            if (Random.Range(0, 100) < idlePatrolChance)
             {
                 Debug.Log("succeed");
-                nextState = new PatrolState(npc, agent, anim, player, initPos);
+                nextState = new PatrolState(npc, agent, anim, player, initPos, ai);
                 stage = EVENT.EXIT;
             }
-            counterFloat = 0;
+            idleCooldownCounter = 0;
         }
         else
         {
-            counterFloat += Time.deltaTime;
+            idleCooldownCounter += Time.deltaTime;
         }
     }
 

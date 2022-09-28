@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 public class PursueState : State
 {
-    public PursueState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos)
-                        : base(_npc, _agent, _anim, _player, _initPos)
+    private float pursueSpeed = 5f;
+
+    public PursueState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos, AI _ai)
+                        : base(_npc, _agent, _anim, _player, _initPos, _ai)
     {
         name = STATE.PURSUE;
-        agent.speed = 5f;
+        agent.speed = pursueSpeed;
     }
 
     public override void Enter()
@@ -25,14 +27,14 @@ public class PursueState : State
         agent.SetDestination(player.transform.position);
         if (CanAttackPlayer())
         {
-            nextState = new AttackState(npc, agent, anim, player, initPos);
+            nextState = new AttackState(npc, agent, anim, player, initPos, ai);
             stage = EVENT.EXIT;
         }
         else if (agent.hasPath)
         { 
             if (!IsPlayerInVisualDistance())
             {
-                nextState = new IdleState(npc, agent, anim, player, initPos);
+                nextState = new IdleState(npc, agent, anim, player, initPos, ai);
                 stage = EVENT.EXIT;
             }
         }

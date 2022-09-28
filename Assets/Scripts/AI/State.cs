@@ -5,6 +5,10 @@ using UnityEngine.AI;
 
 public class State
 {
+    protected float visDist = 15f,
+        visAngle = 100f,
+        atkDist = 3f;
+
     public enum STATE
     {
         IDLE, PATROL, PURSUE, ATTACK
@@ -23,12 +27,9 @@ public class State
     protected State nextState;
     protected NavMeshAgent agent;
     protected Vector3 initPos;
+    protected AI ai;
 
-    float visDist = 15f;
-    float visAngle = 50f;
-    float atkDist = 3f;
-
-    public State(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos)
+    public State(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos, AI _ai)
     {
         npc = _npc;
         agent = _agent;
@@ -36,9 +37,14 @@ public class State
         stage = EVENT.ENTER;
         player = _player;
         initPos = _initPos;
+        ai = _ai;
     }
 
-    public virtual void Enter() { stage = EVENT.UPDATE; }
+    public virtual void Enter()
+    {
+        stage = EVENT.UPDATE;
+    }
+
     public virtual void Update() { stage = EVENT.UPDATE; }
     public virtual void Exit() { stage = EVENT.EXIT; }
 
@@ -58,7 +64,7 @@ public class State
     {
         Vector3 direction = player.transform.position - npc.transform.position;
         float angle = Vector3.Angle(direction, npc.transform.forward);
-        if(IsPlayerInVisualDistance() && angle <= visAngle)
+        if(IsPlayerInVisualDistance() && angle <= visAngle / 2)
         {
             return true;
         }
