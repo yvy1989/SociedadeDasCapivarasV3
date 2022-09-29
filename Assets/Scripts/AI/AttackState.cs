@@ -11,14 +11,17 @@ public class AttackState : State
                         : base(_npc, _agent, _anim, _player, _initPos, _ai)
     {
         name = STATE.ATTACK;
-        //agent.speed = 5f;
         agent.isStopped = true;
     }
 
     public override void Enter()
     {
-        Debug.Log("Attacking");
+        Debug.Log("Attack");
+
+        attackRotationSpeed = ai.attackRotationSpeed;
+
         anim.SetTrigger("isAttacking");
+
         base.Enter();
     }
 

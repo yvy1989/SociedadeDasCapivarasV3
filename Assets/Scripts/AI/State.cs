@@ -42,6 +42,10 @@ public class State
 
     public virtual void Enter()
     {
+        visDist = ai.visDist;
+        visAngle = ai.visAngle;
+        atkDist = ai.atkDist;
+
         stage = EVENT.UPDATE;
     }
 

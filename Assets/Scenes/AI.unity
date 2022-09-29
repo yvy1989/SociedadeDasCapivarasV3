@@ -368,7 +368,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149117923}
-  m_LocalRotation: {x: 0.08207845, y: -0.0000000039689807, z: 3.2687078e-10, w: 0.9966259}
+  m_LocalRotation: {x: 0.08207845, y: 0.0000000042870814, z: -3.530683e-10, w: 0.9966259}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3152,6 +3152,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3bd5d9752da0ff459b6b1287d2c40ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _visDist: 15
+  _visAngle: 100
+  _atkDist: 3
+  _idleCooldownCounter: 0
+  _idleCooldown: 2
+  _idlePatrolChance: 60
+  _patrolSpeed: 2
+  _patrolRange: 20
+  _patrolTargetLeeway: 1
+  _pursueSpeed: 5
+  _attackRotationSpeed: 2
 --- !u!95 &1633503174
 Animator:
   serializedVersion: 4

@@ -5,20 +5,25 @@ using UnityEngine.AI;
 
 public class PatrolState : State
 {
-    private float patrolRange = 20,
-        patrolTargetLeeway = 1;
+    private float patrolSpeed = 2f,
+        patrolRange = 20f,
+        patrolTargetLeeway = 1f;
 
     public PatrolState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos, AI _ai)
                         : base(_npc, _agent, _anim, _player, _initPos, _ai)
     {
         name = STATE.PATROL;
-        agent.speed = 2f;
         agent.isStopped = false;
     }
 
     public override void Enter()
     {
-        Debug.Log("Patrolling");
+        Debug.Log("Patrol");
+
+        patrolRange = ai.patrolRange;
+        patrolTargetLeeway = ai.patrolTargetLeeway;
+        agent.speed = patrolSpeed;
+
         anim.SetTrigger("isWalking");
         agent.SetDestination(new Vector3(initPos.x + Random.Range(-patrolRange, patrolRange),
                                                                     initPos.y, initPos.z + Random.Range(-patrolRange, patrolRange)));

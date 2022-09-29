@@ -13,12 +13,20 @@ public class IdleState : State
                         : base(_npc, _agent, _anim, _player, _initPos, _ai)
     {
         name = STATE.IDLE;
+        agent.isStopped = true;
     }
 
     public override void Enter()
     {
         Debug.Log("Idle");
+
+        idleCooldownCounter = ai.idleCooldownCounter;
+        idleCooldown = ai.idleCooldown;
+        idlePatrolChance = ai.idlePatrolChance;
+
+        idleCooldownCounter = 0f;
         anim.SetTrigger("isIdle");
+
         base.Enter();
     }
 
@@ -31,10 +39,10 @@ public class IdleState : State
         }
         else if (idleCooldownCounter >= idleCooldown)
         {
-            Debug.Log("test");
+            //Debug.Log("test");
             if (Random.Range(0, 100) < idlePatrolChance)
             {
-                Debug.Log("succeed");
+                //Debug.Log("succeed");
                 nextState = new PatrolState(npc, agent, anim, player, initPos, ai);
                 stage = EVENT.EXIT;
             }

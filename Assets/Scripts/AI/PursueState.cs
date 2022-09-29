@@ -11,14 +11,19 @@ public class PursueState : State
                         : base(_npc, _agent, _anim, _player, _initPos, _ai)
     {
         name = STATE.PURSUE;
-        agent.speed = pursueSpeed;
+        agent.isStopped = false;
     }
 
     public override void Enter()
     {
+        Debug.Log("Pursue");
+
+        pursueSpeed = ai.pursueSpeed;
+        agent.speed = pursueSpeed;
+
         agent.isStopped = false;
-        Debug.Log("Pursuing");
         anim.SetTrigger("isRunning");
+
         base.Enter();
     }
 
