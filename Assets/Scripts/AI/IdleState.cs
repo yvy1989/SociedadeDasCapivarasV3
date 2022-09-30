@@ -18,7 +18,7 @@ public class IdleState : State
 
     public override void Enter()
     {
-        Debug.Log("Idle");
+        //Debug.Log("Idle");
 
         idleCooldownCounter = ai.idleCooldownCounter;
         idleCooldown = ai.idleCooldown;
@@ -39,10 +39,10 @@ public class IdleState : State
         }
         else if (idleCooldownCounter >= idleCooldown)
         {
-            //Debug.Log("test");
+            ////Debug.Log("test");
             if (Random.Range(0, 100) < idlePatrolChance)
             {
-                //Debug.Log("succeed");
+                ////Debug.Log("succeed");
                 nextState = new PatrolState(npc, agent, anim, player, initPos, ai);
                 stage = EVENT.EXIT;
             }

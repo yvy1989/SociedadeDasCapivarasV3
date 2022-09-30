@@ -18,7 +18,7 @@ public class PatrolState : State
 
     public override void Enter()
     {
-        Debug.Log("Patrol");
+        //Debug.Log("Patrol");
 
         patrolRange = ai.patrolRange;
         patrolTargetLeeway = ai.patrolTargetLeeway;

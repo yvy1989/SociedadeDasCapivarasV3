@@ -16,7 +16,7 @@ public class AttackState : State
 
     public override void Enter()
     {
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
 
         attackRotationSpeed = ai.attackRotationSpeed;
 

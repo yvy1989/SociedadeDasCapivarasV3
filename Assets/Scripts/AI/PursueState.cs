@@ -16,7 +16,7 @@ public class PursueState : State
 
     public override void Enter()
     {
-        Debug.Log("Pursue");
+        //Debug.Log("Pursue");
 
         pursueSpeed = ai.pursueSpeed;
         agent.speed = pursueSpeed;
