@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272d2595ed198747987508e23c98da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMat: {fileID: 2100000, guid: 3a4ba7921cb299348905ceea528cf8a2, type: 2}
+  originColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &8080304497306274865
 MonoBehaviour:
   m_ObjectHideFlags: 0
