@@ -7,9 +7,11 @@ public class PlayerCollectSensor : MonoBehaviour
 
     public Material activeMat;
     public Color originColor;
+    public Player player;
 
     private void Start()
     {
+        player = GetComponentInParent<Player>();
         originColor = Color.white;
     }
 

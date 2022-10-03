@@ -10,16 +10,16 @@ public class Collectable : MonoBehaviour
     public static event Action ItemCollected;
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        Player player = collision.GetComponent<Player>();
+        PlayerCollectSensor playerSensor = collision.GetComponent<PlayerCollectSensor>();
 
-        if (player)
+        if (playerSensor && Input.GetKey(KeyCode.E))
         {
             Item item = GetComponent<Item>();
             if (item != null)
             {
-                player.inventory.Add(item);
+                playerSensor.player.inventory.Add(item);
 
                 if (ItemCollected != null)
                 {
