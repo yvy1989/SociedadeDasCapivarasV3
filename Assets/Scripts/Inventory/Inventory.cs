@@ -17,9 +17,9 @@ public class Inventory
 
         public Sprite icon;
 
-        //TESTE/////////////////////////////////////////////////
+        
         public Item itemSlot;
-        //TESTE/////////////////////////////////////////////////
+        
 
         public Slot()
         {
