@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     public Inventory inventory;
     public static Player Instance;
 
+    public Transform itemPlaceHolder;
+
+    public bool isHoldItem = false;
+
     //public int Health;
     //public int Exp;
 
@@ -43,5 +47,9 @@ public class Player : MonoBehaviour
         Item droppedItem = Instantiate(item, spawnOffset, Quaternion.identity);
 
         //droppedItem.rb.AddForce(spawnOffset * 0.5f, ForceMode.Impulse);//////TROCAR RIGIDBODY DO ITEM P 3d
+    }
+    public void DropCraftedItem()
+    {
+        isHoldItem = false;
     }
 }

@@ -34,4 +34,21 @@ public class ItemManager : MonoBehaviour
 
         return null;
     }
+
+    public void setItemToPlayer(Slot_UI selectedSlot)
+    {
+        if (GameManager.instance.player.isHoldItem == false)
+        {
+            GameManager.instance.player.isHoldItem = true;
+            Item CraftedItem = GameManager.instance.itemManager.GetItemByName(selectedSlot.itemName);
+            Item SpawnCraftedItem = Instantiate(CraftedItem, GameManager.instance.player.itemPlaceHolder.position, Quaternion.identity);
+            SpawnCraftedItem.transform.forward = GameManager.instance.player.itemPlaceHolder.forward;
+            SpawnCraftedItem.transform.SetParent(GameManager.instance.player.itemPlaceHolder);
+        }
+        else
+        {
+            Debug.Log("Player esta com item na mao");
+        }
+        
+    }
 }

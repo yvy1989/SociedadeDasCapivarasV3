@@ -9,14 +9,15 @@ public class Inventory_UI : MonoBehaviour
 
     public List<Slot_UI> slots = new List<Slot_UI>();
 
-    /// TEST/////////////////////////////////////////////////////////////////////
+
     private Slot_UI selectedSlot;
-    //////////////////////////////////////////////////////////////////////////////
+
 
 
     private void OnEnable()
     {
         Collectable.ItemCollected += Refresh;
+        CraftManager.ItemRemoved += Refresh;
     }
 
     // Update is called once per frame
@@ -136,14 +137,26 @@ public class Inventory_UI : MonoBehaviour
         if (slots.Count == 9)//////QTD de slots
         {
             selectedSlot = slots[index];
+
+            
             if (selectedSlot != null)
             {
-                selectedSlot.Interact();/// chamada do metodo de interface iteracao()
+                if(selectedSlot.itemType == "craft")
+                {
+                    Debug.Log("Item de craft");
+                    GameManager.instance.itemManager.setItemToPlayer(selectedSlot);
+                }
+                else
+                {
+                    selectedSlot.Interact();/// chamada do metodo de interface iteracao()
 
-                //REMOVE O ITEM SEM DROPAR///////////////////////
-                selectedSlot.SetEmpty();
-                UseItem(index);
-                /////////////////////////
+                    //REMOVE O ITEM SEM DROPAR///////////////////////
+                    selectedSlot.SetEmpty();
+                    UseItem(index);
+                    /////////////////////////
+                }
+
+
             }
         }
     }

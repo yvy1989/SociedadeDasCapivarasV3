@@ -11,6 +11,10 @@ public class Slot_UI : MonoBehaviour
     public TextMeshProUGUI quantityText;
     Item itemSlot;
 
+    //TESTE PICKUP ITEM
+    public string itemType;
+    public string itemName;
+    //
 
     public void SetItem(Inventory.Slot slot)
     {
@@ -20,7 +24,9 @@ public class Slot_UI : MonoBehaviour
             itemIcon.sprite = slot.icon;
             itemIcon.color = new Color(1, 1, 1, 1);
             quantityText.text = slot.count.ToString();
-            itemSlot = slot.itemSlot;          
+            itemSlot = slot.itemSlot;
+            itemType = slot.itemSlot.data.itemType;
+            itemName = slot.itemSlot.data.itemName;
         }
     }
 

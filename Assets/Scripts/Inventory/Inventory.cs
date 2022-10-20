@@ -58,6 +58,7 @@ public class Inventory
                 {
                     icon = null;
                     itemName = "";
+                    itemSlot = null;
                 }
             }
 
@@ -99,5 +100,32 @@ public class Inventory
     public void Remove(int index)
     {
         slots[index].RemoveItem();
+    }
+
+    public bool RemoveByName(string name)///////////////////////////////////TESTE
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if(slots[i].itemName == name)
+            {
+                Remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getIndexByName(string _itemName)
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if(slots[i].itemName == _itemName)
+            {
+                Debug.Log(i);
+                return i;
+            }
+        }
+        return -1;
+        
     }
 }
