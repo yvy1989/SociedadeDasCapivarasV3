@@ -269,7 +269,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149117923}
-  m_LocalRotation: {x: 0.17679824, y: -0.000000008467664, z: 0.0000000015210289, w: 0.98424715}
+  m_LocalRotation: {x: 0.17679824, y: 0.0000000084676675, z: -0.0000000015210296, w: 0.98424715}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6018,6 +6018,187 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2068364339}
   itemManager: {fileID: 0}
+  soundAudioClips:
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: c9dd324f80335bd4cadcb52af71a3ad9, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: 4af27acdb2eca8b4bb03f3b9dd55a6c8, type: 3}
+  - sound: 2
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
+  - sound: 3
+    audioClip: {fileID: 0}
 --- !u!1001 &1991794920
 PrefabInstance:
   m_ObjectHideFlags: 0
