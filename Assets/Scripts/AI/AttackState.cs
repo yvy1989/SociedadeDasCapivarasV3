@@ -13,7 +13,7 @@ public class AttackState : State
         name = STATE.ATTACK;
         agent.isStopped = true;
     }
-
+    
     public override void Enter()
     {
         //Debug.Log("Attack");

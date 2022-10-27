@@ -29,11 +29,16 @@ public class PlayerMov : MonoBehaviour
 
             move = new Vector3(0, 0, Input.GetAxisRaw("Vertical") * Time.deltaTime);
             move = this.transform.TransformDirection(move);
+       
+        
 
 
             
 
-            controller.Move(move * speed);
+            controller.Move(move * speed);  
+            // ativar essa linha de baixo para sair o som
+           // SoudManager.PlaySound(SoudManager.SoudType.PlayerMove);
+            
             
 
             /*
@@ -47,6 +52,7 @@ public class PlayerMov : MonoBehaviour
 
         // Move the controller
         controller.Move(move * Time.deltaTime);
+        
 
         transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * rotationSpeed*Time.deltaTime);
 

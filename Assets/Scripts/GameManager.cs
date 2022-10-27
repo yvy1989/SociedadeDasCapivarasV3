@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         itemManager = GetComponent<ItemManager>();
+        SoudManager.Initialize();
     }
     public SoundAudioClip[] soundAudioClips;
     [System.Serializable]

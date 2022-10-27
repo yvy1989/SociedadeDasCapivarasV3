@@ -9,6 +9,7 @@ public class Eat : MonoBehaviour, IInteractable
     {
         Debug.Log("Comeu " + tipo);
     }
+    
 
 
     // Start is called before the first frame update
