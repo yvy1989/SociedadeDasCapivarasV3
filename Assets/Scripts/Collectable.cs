@@ -24,6 +24,8 @@ public class Collectable : MonoBehaviour
                 if (ItemCollected != null)
                 {
                     ItemCollected();
+                    SoudManager.PlaySound(SoudManager.SoudType.CollectItem);
+
                 }
 
 

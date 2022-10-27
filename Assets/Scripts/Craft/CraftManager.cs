@@ -55,6 +55,7 @@ public class CraftManager : MonoBehaviour
                     {
                         Debug.Log("CRIOU MACHADO");
                         SpanwItenByName(itemName);
+                        SoudManager.PlaySound(SoudManager.SoudType.Craft);
                     }
 
                     
