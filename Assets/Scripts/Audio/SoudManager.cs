@@ -10,7 +10,7 @@ public static class SoudManager
         JaguarAttack,
         Damage,
         CollectItem,
-        Eat,
+        EatApple,
         Craft
     }
     private static Dictionary<SoudType, float> soundTimeDictionary;

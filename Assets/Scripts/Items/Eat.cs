@@ -8,6 +8,7 @@ public class Eat : MonoBehaviour, IInteractable
     public void Interact()
     {
         Debug.Log("Comeu " + tipo);
+        SoudManager.PlaySound(SoudManager.SoudType.EatApple);
     }
     
 
