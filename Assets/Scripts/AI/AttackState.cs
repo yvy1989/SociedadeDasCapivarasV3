@@ -17,7 +17,7 @@ public class AttackState : State
     public override void Enter()
     {
         //Debug.Log("Attack");
-
+        SoudManager.PlaySound(SoudManager.SoudType.JaguarAttack);
         attackRotationSpeed = ai.attackRotationSpeed;
 
         anim.SetTrigger("isAttacking");

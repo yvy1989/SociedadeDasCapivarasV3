@@ -25,4 +25,11 @@ public class GameManager : MonoBehaviour
 
         itemManager = GetComponent<ItemManager>();
     }
+    public SoundAudioClip[] soundAudioClips;
+    [System.Serializable]
+    public class SoundAudioClip
+    {
+        public SoudManager.SoudType sound;
+        public AudioClip audioClip;
+    }
 }
