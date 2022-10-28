@@ -8,7 +8,7 @@ public class Item : MonoBehaviour
     
     public ItemData data;
 
-    
+
 
     public IInteractable interactable;
     [HideInInspector] public Rigidbody rb;

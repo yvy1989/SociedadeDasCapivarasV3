@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 using System;
 
 public class CraftManager : MonoBehaviour
 {
+
     public Player p;
 
     public GameObject CraftMenuPanel;
@@ -14,86 +16,64 @@ public class CraftManager : MonoBehaviour
 
     public CinemachineFreeLook cam; //camera do cinemachine para travar o freelock durante o menu de craft
 
-    public CraftedItem[] craftedItem;
 
-    public static event Action ItemRemoved;
 
     private void Start()
     {
         p = new Player();
     }
-    public bool checkItem(string name)// verifica se o player possui o item para o craft
+
+    public bool checkItem(string itemName, int itemAmount)// verifica se o player possui o item para o craft
     {
         if (p.inventory != null)
         {
-            foreach (var item in p.inventory.slots)
+            foreach (var _slot in p.inventory.slots)
             {
-                if(item.itemName == name)
+                if (_slot.itemName == itemName && _slot.count>=itemAmount)
                 {
+                    for (int i = 0; i < itemAmount; i++)
+                    {
+                        _slot.RemoveItem();
+                    }
+                    Debug.Log("Tem os itens");
+                    
                     return true;
-                }   
-            }           
+                }
+            }
         }
+        Debug.Log("Nao tem os itens");
         return false;
     }
 
-
     public void craftItem(string itemName)
     {
-        //verificar se possui os itens////////////////////////////////////////////////////
-
-        foreach (var _craftedItem in craftedItem)
+        switch (itemName)
         {
-            if (_craftedItem.name == itemName)
-            {
-                foreach (var _necItens in _craftedItem._necessaryItens)
+            case "Axe":
                 {
+                    if (checkItem("Log", 2) && checkItem("Rock", 1))
+                    {
+                        Debug.Log("CRIOU MACHADO");
+                        SpanwItenByName(itemName);
+                    }
 
-                    if (checkItem(_necItens.itemName))
-                    {
-                        
-                        //REFRESH
-                        if (ItemRemoved != null)
-                        {
-                            ItemRemoved();
-                        }
-                        //
-                    }
-                    else
-                    {
-                        Debug.Log("VOCE NAO POSSUI ITENS SUFICIENTES " );
-                        return;
-                    }
+                    
+                    break;
                 }
-
-
-            }
-            else
-            {
-                return;
-            }
+          
+            case "Backpack":
+                {
+                    Debug.Log("CRIOU MOCHILA");
+                    break;
+                }
+            default:
+                break;
 
         }
-        /////remove os itens//////////////////////////////////////////////////////////////////////////////
-
-        foreach (var _craftedItem in craftedItem)
-        {
-            foreach (var _necItens in _craftedItem._necessaryItens)
-            {
-                p.inventory.RemoveByName(_necItens.itemName);
-                //REFRESH
-                if (ItemRemoved != null)
-                {
-                    ItemRemoved();
-                }
-                //
-            }
-
-        }
-
-        /////////////////spawna o item
-        SpanwItenByName(itemName);
     }
+
+
+    
 
     private void SpanwItenByName(string itemName)
     {
@@ -141,5 +121,8 @@ public class CraftManager : MonoBehaviour
 
         }
     }
+
+
+
 
 }

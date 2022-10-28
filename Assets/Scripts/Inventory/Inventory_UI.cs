@@ -17,7 +17,7 @@ public class Inventory_UI : MonoBehaviour
     private void OnEnable()
     {
         Collectable.ItemCollected += Refresh;
-        CraftManager.ItemRemoved += Refresh;
+        Inventory.RefreshUI += Refresh;
     }
 
     // Update is called once per frame

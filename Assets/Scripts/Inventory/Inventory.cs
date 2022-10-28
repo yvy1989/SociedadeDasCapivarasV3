@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,12 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory
 {
-    
+    public static event Action RefreshUI;
+
     [System.Serializable]
     public class Slot
     {
+        
         public string itemName;
         public int count;
         
@@ -59,7 +62,13 @@ public class Inventory
                     icon = null;
                     itemName = "";
                     itemSlot = null;
+                    
                 }
+            }
+
+            if (RefreshUI != null)
+            {
+                RefreshUI();// evento p atualizar o UI dos inventarios
             }
 
         }
@@ -78,11 +87,13 @@ public class Inventory
 
     public void Add(Item item)
     {
+        
         foreach(Slot slot in slots) //adiciona o item no slot que ja existe e verifica se o limite de itens nao foi ultrapassado
         {
             if(slot.itemName == item.data.itemName && slot.CanAddItem())
             {
                 slot.AddItem(item);
+                //Debug.Log(slot.qtd);
                 return;
             } 
         }
@@ -92,6 +103,7 @@ public class Inventory
             if (slot.itemName == "")
             {
                 slot.AddItem(item);
+                //Debug.Log(slot.qtd);
                 return;
             }
         }
