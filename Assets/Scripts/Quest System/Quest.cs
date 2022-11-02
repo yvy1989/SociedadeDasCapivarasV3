@@ -11,6 +11,7 @@ public class Quest : MonoBehaviour
 
     public Transform spawnItemLocation;
     public Item rewardItem;
+    public Item requestItem;
     
 
     private void Start()
