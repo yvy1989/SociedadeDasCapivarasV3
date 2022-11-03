@@ -36,4 +36,22 @@ public class Quest : MonoBehaviour
         isFinish = true;
         //entrgar o item qundo finalizar a quest
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Player"))
+        {
+            GetComponentInParent<QuestManager>().UIQuest.SetActive(true);
+        }
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.CompareTag("Player"))
+        {
+            GetComponentInParent<QuestManager>().UIQuest.SetActive(false);
+        }
+
+    }
 }
