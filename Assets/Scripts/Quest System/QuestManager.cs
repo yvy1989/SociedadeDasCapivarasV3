@@ -7,6 +7,8 @@ public class QuestManager : MonoBehaviour
 
     List<Quest> quests = new List<Quest>();
 
+    public GameObject UIQuest;
+
     int activeQuests;
 
     // Start is called before the first frame update
