@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Quest : MonoBehaviour
 {
     public bool isStarted;
@@ -42,6 +43,8 @@ public class Quest : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             GetComponentInParent<QuestManager>().UIQuest.SetActive(true);
+            GetComponentInParent<QuestManager>().questTitle.text = questName;
+            GetComponentInParent<QuestManager>().questDescription.text = questDescription;
         }
         
     }
@@ -50,6 +53,8 @@ public class Quest : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
+            GetComponentInParent<QuestManager>().questTitle.text = "";
+            GetComponentInParent<QuestManager>().questDescription.text = "";
             GetComponentInParent<QuestManager>().UIQuest.SetActive(false);
         }
 

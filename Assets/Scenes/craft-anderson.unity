@@ -9741,6 +9741,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIQuest: {fileID: 147519163}
+  questTitle: {fileID: 355206813}
+  questDescription: {fileID: 1134633406}
 --- !u!1001 &6729917154037088803
 PrefabInstance:
   m_ObjectHideFlags: 0
