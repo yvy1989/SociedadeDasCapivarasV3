@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+
 
 public class QuestManager : MonoBehaviour
 {
-    List<Quest> quests = new List<Quest>();
 
-    int activeQuests;
+    public int activeQuestID;
+
 
     public GameObject UIQuest;
     public TextMeshProUGUI questTitle;
@@ -16,12 +18,32 @@ public class QuestManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        activeQuests = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+
+    public void QuestButtonByID(string behavoior) //Inicia ou Termina uma quest de acordo com a string behavior
+    {
+        Quest[] quests = GetComponentsInChildren<Quest>();
+
+        foreach (var quest in quests)
+        {
+            if (quest.questId == activeQuestID)
+            {
+                if (behavoior=="start") {
+                    quest.startQuest();
+                }
+                if (behavoior == "end")
+                {
+                    quest.cancellQuest();
+                }
+            }
+        }
+
     }
 }
