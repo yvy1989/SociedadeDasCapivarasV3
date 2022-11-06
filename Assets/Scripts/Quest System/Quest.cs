@@ -10,7 +10,7 @@ public class Quest : MonoBehaviour
 
     public bool isStarted;
     public bool isFinish;
-    public string questName;
+    public string questTitle;
     public string questDescription;
 
     public Transform spawnItemLocation;
@@ -30,7 +30,7 @@ public class Quest : MonoBehaviour
 
     public void startQuest()
     {
-        Debug.Log("Iniciou a quest da "+questName);       
+        Debug.Log("Iniciou a quest da "+questTitle);       
         isStarted = true;
         StartCoroutine(checkRequestItem());//Verificar constantemente se o player pegou o item da quest
     }
@@ -46,7 +46,8 @@ public class Quest : MonoBehaviour
                 if(slot.itemName == requestItem.data.name)
                 {
                     Debug.Log("Tem o item!!!");
-                    //////////////////////////////////Marcar um checkbox em uma UI de quest em andamento
+                    finishQuest();
+                    
                     StopAllCoroutines();
                 }
             }
@@ -61,7 +62,7 @@ public class Quest : MonoBehaviour
 
     public void cancellQuest()
     {
-        Debug.Log("Cancelou a quest da" + questName);
+        Debug.Log("Cancelou a quest da" + questTitle);
         isStarted = false;
     }
 
@@ -76,7 +77,7 @@ public class Quest : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             GetComponentInParent<QuestManager>().UIQuest.SetActive(true);
-            GetComponentInParent<QuestManager>().questTitle.text = questName;
+            GetComponentInParent<QuestManager>().questTitle.text = questTitle;
             GetComponentInParent<QuestManager>().questDescription.text = questDescription;
             GetComponentInParent<QuestManager>().activeQuestID = questId;
 
