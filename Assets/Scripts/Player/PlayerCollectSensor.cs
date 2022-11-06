@@ -16,7 +16,7 @@ public class PlayerCollectSensor : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)//Troca cor do item quando fica proximo
     {
         Item i;
         i = other.transform.GetComponent<Item>();
@@ -26,7 +26,7 @@ public class PlayerCollectSensor : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)//volta cor original qndo sai
     {
         Item i;
         i = other.transform.GetComponent<Item>();

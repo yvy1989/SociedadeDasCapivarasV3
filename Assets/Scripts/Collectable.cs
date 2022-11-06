@@ -10,6 +10,7 @@ public class Collectable : MonoBehaviour
     public static event Action ItemCollected;
 
 
+
     private void OnTriggerStay(Collider collision)
     {
         PlayerCollectSensor playerSensor = collision.GetComponent<PlayerCollectSensor>();

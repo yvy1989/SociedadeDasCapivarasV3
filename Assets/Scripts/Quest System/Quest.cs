@@ -16,6 +16,7 @@ public class Quest : MonoBehaviour
     public Transform spawnItemLocation;
     public Item rewardItem;
     public Item requestItem;
+    
 
 
     private void Start()
@@ -23,14 +24,40 @@ public class Quest : MonoBehaviour
         isStarted = false;
         isFinish = false;
 
+
     }
 
 
     public void startQuest()
     {
-        Debug.Log("Iniciou a quest da "+questName);
+        Debug.Log("Iniciou a quest da "+questName);       
         isStarted = true;
+        StartCoroutine(checkRequestItem());//Verificar constantemente se o player pegou o item da quest
     }
+
+    
+
+    IEnumerator checkRequestItem()// verifica se o player tem o item da quest no inventario a cada 0.1 segundos
+    {
+        while (true)
+        {
+            foreach (var slot in Player.Instance.inventory.slots)
+            {
+                if(slot.itemName == requestItem.data.name)
+                {
+                    Debug.Log("Tem o item!!!");
+                    //////////////////////////////////Marcar um checkbox em uma UI de quest em andamento
+                    StopAllCoroutines();
+                }
+            }
+
+            
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+
+    
 
     public void cancellQuest()
     {
