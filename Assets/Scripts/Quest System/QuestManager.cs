@@ -77,19 +77,17 @@ public class QuestManager : MonoBehaviour
 
         startButtonPressed = true;
 
-        UIactiveQuest.SetActive(true);// habilita a UI de quest Ativa *SOM
+        
 
         foreach (var quest in quests)
         {
             if (quest.questId == activeQuestID)
             {
                 if (behavoior=="start") {
+                    UIactiveQuest.SetActive(true);// habilita a UI de quest Ativa
                     quest.startQuest();
                 }
-                if (behavoior == "end")
-                {
-                    quest.cancellQuest();
-                }
+
             }
         }
 
