@@ -9,6 +9,7 @@ public class PlayerMov : MonoBehaviour
     public float rotationSpeed;
     public float jumpSpeed = 10f;
     public float gravity = 20.0f;
+    public GameObject cam;
 
 
 
@@ -19,6 +20,7 @@ public class PlayerMov : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        
     }
 
     public void Update()
@@ -27,8 +29,9 @@ public class PlayerMov : MonoBehaviour
         {
             
 
-            move = new Vector3(0, 0, Input.GetAxisRaw("Vertical") * Time.deltaTime);
+            move = new Vector3(Input.GetAxisRaw("Horizontal")*Time.deltaTime, 0, Input.GetAxisRaw("Vertical") * Time.deltaTime);
             move = this.transform.TransformDirection(move);
+           
        
         
 
@@ -47,14 +50,15 @@ public class PlayerMov : MonoBehaviour
                 move.y = jumpSpeed;
             }*/
         }
-
+            
         move.y -= gravity * Time.deltaTime;
 
         // Move the controller
         controller.Move(move * Time.deltaTime);
+        transform.rotation = cam.transform.rotation;
         
 
-        transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * rotationSpeed*Time.deltaTime);
+        
 
     }
 }
