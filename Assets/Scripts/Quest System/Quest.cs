@@ -9,7 +9,8 @@ public class Quest : MonoBehaviour
     public int questId;
 
     public bool isStarted;
-    public bool isFinish;
+    public bool isGetItem;
+    public bool isFinishQuest = false;
     public string questTitle;
     public string questDescription;
 
@@ -22,7 +23,7 @@ public class Quest : MonoBehaviour
     private void Start()
     {
         isStarted = false;
-        isFinish = false;
+        isGetItem = false;
 
 
     }
@@ -46,7 +47,7 @@ public class Quest : MonoBehaviour
                 if(slot.itemName == requestItem.data.name)
                 {
                     Debug.Log("Tem o item!!!");
-                    finishQuest();
+                    getQuestItem();
                     
                     StopAllCoroutines();
                 }
@@ -57,7 +58,12 @@ public class Quest : MonoBehaviour
         }
     }
 
-
+    public void resetQuest()
+    {
+        isStarted = false;
+        isFinishQuest = false;
+        isGetItem = false;
+    }
     
 
     public void cancellQuest()
@@ -66,17 +72,33 @@ public class Quest : MonoBehaviour
         isStarted = false;
     }
 
-    public void finishQuest()
+    public void getQuestItem()
     {
-        isFinish = true;
+        isGetItem = true;
         //entrgar o item qundo finalizar a quest
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("Player") && !isFinishQuest)
         {
-            GetComponentInParent<QuestManager>().UIQuest.SetActive(true);
+            if (!GetComponentInParent<QuestManager>().startButtonPressed)
+            {
+                GetComponentInParent<QuestManager>().UIQuest.SetActive(true);
+            }
+            else
+            {
+                GetComponentInParent<QuestManager>().UIQuest.SetActive(false);//desabilita UI quest
+
+                //verificar se pegou o item da quest para trocar a UI no NPC que deu a quest
+                if (isGetItem)
+                {
+                    Debug.Log("Terminou a quest");
+                    GetComponentInParent<QuestManager>().UIQuest.SetActive(true); //habilita UI quest
+                    isFinishQuest = true; // finaliza a quest
+                }
+                //receber o item de recompensa
+            }
             GetComponentInParent<QuestManager>().questTitle.text = questTitle;
             GetComponentInParent<QuestManager>().questDescription.text = questDescription;
             GetComponentInParent<QuestManager>().activeQuestID = questId;
