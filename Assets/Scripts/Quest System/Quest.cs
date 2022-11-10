@@ -17,7 +17,9 @@ public class Quest : MonoBehaviour
     public Transform spawnItemLocation;
     public Item rewardItem;
     public Item requestItem;
-    
+    public int itemAmount;
+
+
 
 
     private void Start()
@@ -44,9 +46,14 @@ public class Quest : MonoBehaviour
         {
             foreach (var slot in Player.Instance.inventory.slots)
             {
-                if(slot.itemName == requestItem.data.name)
+                if(slot.itemName == requestItem.data.name && slot.count >= itemAmount)
                 {
-                    Debug.Log("Tem o item!!!");
+                    /*
+                    for (int i = 0; i < itemAmount; i++)
+                    {
+                        slot.RemoveItem();
+                    }*/
+                    
                     getQuestItem();
                     
                     StopAllCoroutines();

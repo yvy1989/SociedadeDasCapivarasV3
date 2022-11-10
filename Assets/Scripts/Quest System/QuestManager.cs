@@ -43,7 +43,7 @@ public class QuestManager : MonoBehaviour
                 if (_quest.isStarted)
                 {
                     activequestTitle.text = string.Format("Quest Title: {0}", _quest.questTitle);
-                    activequestDescription.text = _quest.questDescription;
+                    activequestDescription.text = string.Format("Pick up {0} {1} to get a {2}",_quest.itemAmount, _quest.requestItem.data.itemName, _quest.rewardItem.data.itemName); //_quest.questDescription;
                     activeQuestItemImg.sprite = _quest.requestItem.data.icon;
                     isFindItemToggle.isOn = _quest.isGetItem;
                 }
@@ -89,6 +89,8 @@ public class QuestManager : MonoBehaviour
                 }
 
             }
+
+            //fazer um para finished com o botao para spawnar e remover os itens em quest
         }
 
     }
