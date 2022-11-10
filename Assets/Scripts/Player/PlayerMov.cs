@@ -11,11 +11,7 @@ public class PlayerMov : MonoBehaviour
     public float gravity = 20.0f;
     public GameObject cam;
 
-
-
-    private Vector3 rotation;
-
-    private Vector3 move = Vector3.zero;
+    public Vector3 move = Vector3.zero;
 
     private void Start()
     {
@@ -38,11 +34,17 @@ public class PlayerMov : MonoBehaviour
 
             
 
-            controller.Move(move * speed);  
+            controller.Move(move * speed);
+            if (move.x != 0 || move.z != 0)
+            {
+                controller.Move(move * speed);
+                transform.rotation = new Quaternion(transform.rotation.x,cam.transform.rotation.y,transform.rotation.z,transform.rotation.w);
+
+            }
             // ativar essa linha de baixo para sair o som
-           // SoudManager.PlaySound(SoudManager.SoudType.PlayerMove);
-            
-            
+            // SoudManager.PlaySound(SoudManager.SoudType.PlayerMove);
+
+
 
             /*
             if (Input.GetButton("Jump"))
@@ -52,13 +54,7 @@ public class PlayerMov : MonoBehaviour
         }
             
         move.y -= gravity * Time.deltaTime;
-
-        // Move the controller
         controller.Move(move * Time.deltaTime);
-        transform.rotation = cam.transform.rotation;
-        
-
-        
 
     }
 }
