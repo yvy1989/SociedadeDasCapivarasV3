@@ -38,7 +38,8 @@ public class PlayerMov : MonoBehaviour
             if (move.x != 0 || move.z != 0)
             {
                 controller.Move(move * speed);
-                transform.rotation = new Quaternion(transform.rotation.x,cam.transform.rotation.y,transform.rotation.z,transform.rotation.w);
+                transform.rotation = new Quaternion(transform.rotation.x,cam.transform.rotation.y,transform.rotation.z,cam.transform.rotation.w);
+               
 
             }
             // ativar essa linha de baixo para sair o som
