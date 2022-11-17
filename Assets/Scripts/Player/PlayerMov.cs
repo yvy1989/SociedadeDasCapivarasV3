@@ -33,8 +33,8 @@ public class PlayerMov : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.rotation = Quaternion.LookRotation(rotateTargetZ*-1);
-            var dir = transform.forward * speed * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(rotateTargetZ);
+            var dir = transform.forward*-1* speed * Time.deltaTime;
             rb.velocity = dir;
         }
         Vector3 rotateTargetX = axis.transform.right;
