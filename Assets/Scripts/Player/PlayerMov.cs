@@ -4,58 +4,54 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
-    public CharacterController controller;
-    public float speed = 10;
-    public float rotationSpeed;
-    public float jumpSpeed = 10f;
-    public float gravity = 20.0f;
-    public GameObject cam;
+    public Rigidbody rb;
+    public float speed;
+    public Transform axis;
+   
 
-    public Vector3 move = Vector3.zero;
+
+
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
-        
+       
     }
 
     public void Update()
     {
-        if (controller.isGrounded)
+        Move();
+    }
+    void Move()
+    {
+        Vector3 rotateTargetZ = axis.transform.forward;
+        rotateTargetZ.y = 0;
+        if (Input.GetKey(KeyCode.W))
         {
-            
-
-            move = new Vector3(Input.GetAxisRaw("Horizontal")*Time.deltaTime, 0, Input.GetAxisRaw("Vertical") * Time.deltaTime);
-            move = this.transform.TransformDirection(move);
-           
-       
-        
-
-
-            
-
-            controller.Move(move * speed);
-            if (move.x != 0 || move.z != 0)
-            {
-                controller.Move(move * speed);
-                transform.rotation = new Quaternion(transform.rotation.x,cam.transform.rotation.y,transform.rotation.z,cam.transform.rotation.w);
-               
-
-            }
-            // ativar essa linha de baixo para sair o som
-            // SoudManager.PlaySound(SoudManager.SoudType.PlayerMove);
-
-
-
-            /*
-            if (Input.GetButton("Jump"))
-            {
-                move.y = jumpSpeed;
-            }*/
+            transform.rotation = Quaternion.LookRotation(rotateTargetZ);
+            var dir = transform.forward * speed* Time.deltaTime;
+            rb.velocity = dir;
         }
-            
-        move.y -= gravity * Time.deltaTime;
-        controller.Move(move * Time.deltaTime);
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.rotation = Quaternion.LookRotation(rotateTargetZ*-1);
+            var dir = transform.forward * speed * Time.deltaTime;
+            rb.velocity = dir;
+        }
+        Vector3 rotateTargetX = axis.transform.right;
+        rotateTargetX.y = 0;
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.rotation = Quaternion.LookRotation(rotateTargetX);
+            var dir = transform.forward * speed * Time.deltaTime;
+            rb.velocity = dir;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.rotation = Quaternion.LookRotation(rotateTargetX*-1);
+            var dir = transform.forward * speed * Time.deltaTime;
+            rb.velocity = dir;
+        }
+
 
     }
 }
