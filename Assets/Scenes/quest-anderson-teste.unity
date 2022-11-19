@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 73184406}
   - component: {fileID: 73184405}
   m_Layer: 5
-  m_Name: Button
+  m_Name: AcceptBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,10 +163,10 @@ RectTransform:
   m_Father: {fileID: 1183578975}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -106}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.323, y: 0.039593942}
+  m_AnchorMax: {x: 0.638, y: 0.12234544}
+  m_AnchoredPosition: {x: -0.5, y: -0.50001526}
+  m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &73184405
 MonoBehaviour:
@@ -211,7 +211,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 73184406}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833071822}
+        m_TargetAssemblyTypeName: UIQuestManager, Assembly-CSharp
+        m_MethodName: startQuestByID
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &73184406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a8be18236369048813a6e9ac674275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questID: 1
   questName: Find My Bag
   complete: 0
   indice: 0
@@ -488,10 +501,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 22.3
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -612,7 +625,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149117923}
-  m_LocalRotation: {x: 0.17679824, y: 0.000000008467664, z: -0.0000000015210289, w: 0.98424715}
+  m_LocalRotation: {x: 0.17679824, y: -0.0000000084676675, z: 0.0000000015210296, w: 0.98424715}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1301,7 +1314,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195547782}
-  m_LocalRotation: {x: 0.14092885, y: -0.00000000851733, z: 0.0000000012124381, w: 0.99001974}
+  m_LocalRotation: {x: 0.14092885, y: 0.000000008517326, z: -0.0000000012124376, w: 0.99001974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3532,10 +3545,10 @@ RectTransform:
   m_Father: {fileID: 1183578975}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 56}
-  m_SizeDelta: {x: 438.0303, y: 125.7417}
+  m_SizeDelta: {x: -49.969696, y: -132.2583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &743048170
 MonoBehaviour:
@@ -3584,7 +3597,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.2
+  m_fontSize: 20.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6099,7 +6112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1183578975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8017,8 +8030,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActiveQuestPanel: {fileID: 1820157485}
+  CurrentQuest_id: 0
   logPanel: {fileID: 1183578974}
   LogQuestDescription: {fileID: 743048170}
+  AcceptQuestBtn: {fileID: 73184405}
 --- !u!4 &1833071823
 Transform:
   m_ObjectHideFlags: 0

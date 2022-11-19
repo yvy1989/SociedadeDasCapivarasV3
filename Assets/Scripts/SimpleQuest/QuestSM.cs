@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuestSM : MonoBehaviour
 {
-
+    public int questID;
     public string questName;
     public bool complete;
 
@@ -129,9 +129,16 @@ public class QuestSM : MonoBehaviour
                     questManagerUI.LogQuestDescription.text += "\n\n";
 
                 }
-                
-            }
-            
+
+                questManagerUI.CurrentQuest_id = questID;
+
+                if (isQuestActive) // evita de o painel de log ficar ativo mesmo voce aceitando a quest
+                {
+                    questManagerUI.logPanel.SetActive(false);
+                }
+
+
+            }            
         }
     }
 
