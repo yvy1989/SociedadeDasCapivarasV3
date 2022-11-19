@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class QuestSM : MonoBehaviour
 {
+
     public string questName;
     public bool complete;
 
@@ -111,6 +112,41 @@ public class QuestSM : MonoBehaviour
 
         return result;
 
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UIQuestManager questManagerUI = gameObject.GetComponentInParent<UIQuestManager>();
+            if (questManagerUI != null)
+            {
+                questManagerUI.logPanel.SetActive(true);
+                questManagerUI.LogQuestDescription.text = "";
+                foreach (var goal in goals)
+                {
+                    questManagerUI.LogQuestDescription.text += goal.description;
+                    questManagerUI.LogQuestDescription.text += "\n\n";
+
+                }
+                
+            }
+            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UIQuestManager questManagerUI = gameObject.GetComponentInParent<UIQuestManager>();
+            if (questManagerUI != null)
+            {
+                questManagerUI.logPanel.SetActive(false);
+                
+            }
+
+        }
     }
 
 }
