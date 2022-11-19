@@ -12,6 +12,8 @@ public class QuestSM : MonoBehaviour
     int indiceGoalMax;
     public List<Goal> goals;
 
+    public bool isQuestActive;
+
     private void Start()
     {
 
@@ -44,44 +46,47 @@ public class QuestSM : MonoBehaviour
     private void Update()
     {
 
-        if (complete)
+        if (isQuestActive)
         {
-            return;
-        }
-
-        /*
-        foreach (var g in goals)
-        {
-            if(g != null && g.goalAct != null){
-
-                g.Gupdate();
-
-            }
-            else
+            if (complete)
             {
-                g.isComplete = true;
-            }
-        }
-        */
-
-        if (goals[indice] != null)
-        {
-
-            if (goals[indice].isComplete == true)
-            {
-                indice++;
-                indice = Mathf.Clamp(indice, 0, goals.Count - 1);
-                goals[indice].Init();
                 return;
             }
 
-            goals[indice].Gupdate();
+            /*
+            foreach (var g in goals)
+            {
+                if(g != null && g.goalAct != null){
 
-        }
+                    g.Gupdate();
 
-        if (CheckAllGoalsComplete())
-        {
-            complete = true;
+                }
+                else
+                {
+                    g.isComplete = true;
+                }
+            }
+            */
+
+            if (goals[indice] != null)
+            {
+
+                if (goals[indice].isComplete == true)
+                {
+                    indice++;
+                    indice = Mathf.Clamp(indice, 0, goals.Count - 1);
+                    goals[indice].Init();
+                    return;
+                }
+
+                goals[indice].Gupdate();
+
+            }
+
+            if (CheckAllGoalsComplete())
+            {
+                complete = true;
+            }
         }
 
     }
