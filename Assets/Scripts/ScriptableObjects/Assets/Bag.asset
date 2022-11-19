@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53ce1cb9daa111d4e9dd10351e65fd51, type: 3}
-  m_Name: Apple
+  m_Script: {fileID: 11500000, guid: 9eebe89411af9294ca11e0a05c5e02f0, type: 3}
+  m_Name: Bag
   m_EditorClassIdentifier: 
-  id: 3
-  itemName: Apple
-  value: 10
-  icon: {fileID: 21300000, guid: 40512d860c209e24ca6151a5a3699aa0, type: 3}
-  itemType: 0
+  itemType: quest
+  itemName: Bag
+  icon: {fileID: 21300000, guid: 60d8893c704893f489dc3cd7b9b7a5b0, type: 3}
