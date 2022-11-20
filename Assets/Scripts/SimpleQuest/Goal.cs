@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Goal
 {
+    public int goalIndex;
     [TextArea(2, 4)]
     public string description;
     public bool isComplete;

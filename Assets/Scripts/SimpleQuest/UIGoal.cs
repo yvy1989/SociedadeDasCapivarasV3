@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIGoal : MonoBehaviour
 {
-
+    public int goalIndex;
     public TextMeshProUGUI TxtGoalDescription;
     public Toggle goalStatusToogle;
 
