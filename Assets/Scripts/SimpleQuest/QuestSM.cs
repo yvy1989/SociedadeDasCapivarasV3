@@ -122,15 +122,18 @@ public class QuestSM : MonoBehaviour
             if (questManagerUI != null)
             {
                 questManagerUI.logPanel.SetActive(true);
-                questManagerUI.LogQuestDescription.text = "";
+                questManagerUI.LogQuestDescription.text = ""; //apaga o texto do paainel de LOG
                 foreach (var goal in goals)
                 {
                     questManagerUI.LogQuestDescription.text += goal.description;
-                    questManagerUI.LogQuestDescription.text += "\n\n";
+                    questManagerUI.LogQuestDescription.text += "\n\n"; //pula duas linhas caso a quest tenha mais de um objetivo
 
                 }
 
-                questManagerUI.CurrentQuest_id = questID;
+                questManagerUI.CurrentQuest_id = questID; // passa a ID da quest para o questManagerUI
+                questManagerUI.Goals = goals.ToArray(); // passa os objetivos para o questManagerUI
+
+
 
                 if (isQuestActive) // evita de o painel de log ficar ativo mesmo voce aceitando a quest
                 {

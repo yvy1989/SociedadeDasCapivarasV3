@@ -7,6 +7,10 @@ using TMPro;
 public class UIQuestManager : MonoBehaviour
 {
     public GameObject ActiveQuestPanel;
+    public GameObject goalPrefabPanel;
+    public Transform GoalsSpacer;
+
+    public Goal[] Goals;
 
     public int CurrentQuest_id;
 
@@ -18,6 +22,14 @@ public class UIQuestManager : MonoBehaviour
 
     public static UIQuestManager Instance;
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ActiveQuestPanel.SetActive(!ActiveQuestPanel.active);
+        }
+    }
 
 
     public void startQuestByID()
@@ -32,6 +44,14 @@ public class UIQuestManager : MonoBehaviour
                     _quest.isQuestActive = true;
                 }
             }
+
+        }
+
+        foreach (var _goal in Goals)// varre a lista de goals e instancia um painel para cada objetivo da quest
+        {
+            GameObject goalPanel = Instantiate(goalPrefabPanel, GoalsSpacer);
+            goalPanel.GetComponent<UIGoal>().TxtGoalDescription.text = _goal.description;
+            goalPanel.GetComponent<UIGoal>().goalStatusToogle.isOn = _goal.isComplete;
 
         }
         
