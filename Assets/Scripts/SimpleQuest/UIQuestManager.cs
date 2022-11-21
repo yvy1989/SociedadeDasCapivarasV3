@@ -6,7 +6,11 @@ using TMPro;
 
 public class UIQuestManager : MonoBehaviour
 {
+    public bool activeQestComplete;
+
     //ACTIVE PANEL
+
+    public Toggle QuestStatusToogle;
     public GameObject ActiveQuestPanel;
     public GameObject goalPrefabPanel;
     public Transform GoalsSpacer;
@@ -24,10 +28,12 @@ public class UIQuestManager : MonoBehaviour
 
     public static UIQuestManager Instance;
 
+    QuestSM[] Quests;
+
 
     public void startQuestByID()
     {
-        QuestSM[] Quests = GetComponentsInChildren<QuestSM>();
+        Quests = GetComponentsInChildren<QuestSM>();
         if (Quests != null)
         {
             foreach (var _quest in Quests)
@@ -54,24 +60,43 @@ public class UIQuestManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))// abre o painel de quest ativa
         {
             ActiveQuestPanel.SetActive(!ActiveQuestPanel.active);
         }
 
-        if (goalPanels != null)
+
+        if(activeQestComplete== false) // entra aqui se a quest ainda nao estiver terminada
         {
-            foreach (Goal _goal in Goals)
+            if (goalPanels != null)
             {
-                foreach (var _goalPanel in goalPanels)
+                foreach (Goal _goal in Goals)
                 {
-                    if(_goal.goalIndex == _goalPanel.GetComponent<UIGoal>().goalIndex)
+                    foreach (var _goalPanel in goalPanels)
                     {
-                        _goalPanel.GetComponent<UIGoal>().goalStatusToogle.isOn = _goal.isComplete;
+                        if (_goal.goalIndex == _goalPanel.GetComponent<UIGoal>().goalIndex)
+                        {
+                            _goalPanel.GetComponent<UIGoal>().goalStatusToogle.isOn = _goal.isComplete;
+                        }
                     }
                 }
             }
+
+
+            if (Quests != null)
+            {
+                foreach (var _quest in Quests)
+                {
+                    if (_quest.questID == CurrentQuest_id)
+                    {
+                        activeQestComplete = _quest.complete;
+                        QuestStatusToogle.isOn = activeQestComplete;
+                    }
+                }
+
+            }
         }
+        
     }
 
 
