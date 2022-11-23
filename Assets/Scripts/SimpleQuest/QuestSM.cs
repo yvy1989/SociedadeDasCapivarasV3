@@ -6,18 +6,21 @@ public class QuestSM : MonoBehaviour
 {
     public int questID;
     public string questName;
+
     public bool complete;
+
+    public enum QuestProgress { AVAILABLE, ACCEPTED, COMPLETE, DONE }
+    public QuestProgress progress;
 
     public int indice;
 
     int indiceGoalMax;
     public List<Goal> goals;
 
-    public bool isQuestActive;
 
     private void Start()
     {
-
+        progress = QuestProgress.AVAILABLE;
         /*
         foreach (var g in goals)
         {
@@ -47,7 +50,7 @@ public class QuestSM : MonoBehaviour
     private void Update()
     {
 
-        if (isQuestActive)
+        if (progress == QuestSM.QuestProgress.ACCEPTED)
         {
             if (complete)
             {
@@ -87,6 +90,7 @@ public class QuestSM : MonoBehaviour
             if (CheckAllGoalsComplete())
             {
                 complete = true;
+                progress = QuestProgress.COMPLETE;
             }
         }
 
@@ -135,7 +139,7 @@ public class QuestSM : MonoBehaviour
 
 
 
-                if (isQuestActive) // evita de o painel de log ficar ativo mesmo voce aceitando a quest
+                if (progress == QuestProgress.ACCEPTED) // evita de o painel de log ficar ativo mesmo voce aceitando a quest
                 {
                     questManagerUI.logPanel.SetActive(false);
                 }

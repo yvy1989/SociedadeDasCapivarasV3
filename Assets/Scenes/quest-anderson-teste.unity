@@ -295,6 +295,7 @@ MonoBehaviour:
   questID: 1
   questName: Find My Bag
   complete: 0
+  progress: 0
   indice: 0
   goals:
   - goalIndex: 1
@@ -627,7 +628,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149117923}
-  m_LocalRotation: {x: 0.17679824, y: 0.000000008467664, z: -0.0000000015210289, w: 0.98424715}
+  m_LocalRotation: {x: 0.17679824, y: -0.0000000084676675, z: 0.0000000015210296, w: 0.98424715}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1233,7 +1234,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195547782}
-  m_LocalRotation: {x: 0.14092885, y: -0.00000000851733, z: 0.0000000012124381, w: 0.99001974}
+  m_LocalRotation: {x: 0.14092885, y: 0.000000008517326, z: -0.0000000012124376, w: 0.99001974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3101,6 +3102,7 @@ MonoBehaviour:
   questID: 2
   questName: Give me a Log
   complete: 0
+  progress: 0
   indice: 0
   goals:
   - goalIndex: 1
@@ -4375,7 +4377,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911259331}
-  m_LocalRotation: {x: 0.17679824, y: -0.000000008467664, z: 0.0000000015210289, w: 0.98424715}
+  m_LocalRotation: {x: 0.17679824, y: 0.0000000084676675, z: -0.0000000015210296, w: 0.98424715}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4515,7 +4517,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.17679827, y: -0.000000008467665, z: 0.000000001521029, w: 0.98424715}
+  m_LocalRotation: {x: 0.17679827, y: 0.000000008467668, z: -0.0000000015210296, w: 0.98424715}
   m_LocalPosition: {x: 14.59, y: 16.33, z: -43.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -40,7 +40,7 @@ public class UIQuestManager : MonoBehaviour
             {
                 if(_quest.questID == CurrentQuest_id)
                 {
-                    _quest.isQuestActive = true;
+                    _quest.progress = QuestSM.QuestProgress.ACCEPTED; //aceita a quest
                 }
             }
 
