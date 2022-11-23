@@ -10,12 +10,25 @@ public class UIGoal : MonoBehaviour
     public TextMeshProUGUI TxtGoalDescription;
     public Toggle goalStatusToogle;
 
-    // Start is called before the first frame update
 
-
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
+        UIQuestManager.isCurrentQuesDone += resetValues;
+    }
+
+    private void Update()
+    {
+
+    }
+
+    private void resetValues(bool isDone)
+    {
+        if (isDone)
+        {
+            TxtGoalDescription.text = "";
+            goalStatusToogle.isOn = false;
+
+        }
         
     }
 }

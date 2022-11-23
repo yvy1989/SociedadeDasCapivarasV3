@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UIQuestManager : MonoBehaviour
 {
+    public static Action<bool> isCurrentQuesDone;
+
+
     //public bool activeQestComplete;
     public QuestSM.QuestProgress activeQuestProgress;
 
@@ -44,8 +48,15 @@ public class UIQuestManager : MonoBehaviour
                     if(_quest.progress == QuestSM.QuestProgress.COMPLETE)
                     {
                         
-                        Debug.Log("Recebeu o item!!");                      ////////////////////////////////////////////////////////////////////////////entregar item de recompensa e passar status para done
+                        Debug.Log("Recebeu o item!!"); //entregar item de recompensa e passar status para done
                         SpanwItenByName(_quest.rewardItem, _quest.spawnItemLocation.position);
+
+                        //resetar painel activeQuest
+                        QuestStatusToogle.isOn = false;
+                        if (isCurrentQuesDone != null)
+                        {
+                            isCurrentQuesDone(true);
+                        }
 
                         _quest.progress = QuestSM.QuestProgress.DONE;
                         logPanel.SetActive(false); //desabilita o painel de log

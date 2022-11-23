@@ -553,7 +553,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149117923}
-  m_LocalRotation: {x: 0.17679824, y: -0.0000000084676675, z: 0.0000000015210296, w: 0.98424715}
+  m_LocalRotation: {x: 0.17679824, y: 0.000000008467664, z: -0.0000000015210289, w: 0.98424715}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4286,6 +4286,11 @@ Transform:
   m_Father: {fileID: 1469344556}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1009037319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+  m_PrefabInstance: {fileID: 2045548855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1015772003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7360654654804313821, guid: 5f3664c800f6b63498c4787d09a6b0b8, type: 3}
@@ -5682,15 +5687,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5579653198548483286, guid: df66525c675757d489c0714fc8df2d86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.563587
+      value: -24.59
       objectReference: {fileID: 0}
     - target: {fileID: 5579653198548483286, guid: df66525c675757d489c0714fc8df2d86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.6267986
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: 5579653198548483286, guid: df66525c675757d489c0714fc8df2d86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.098644
+      value: -22.38
       objectReference: {fileID: 0}
     - target: {fileID: 5579653198548483286, guid: df66525c675757d489c0714fc8df2d86, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7203,6 +7208,7 @@ Transform:
   m_Children:
   - {fileID: 861385497}
   - {fileID: 89381179}
+  - {fileID: 1009037319}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7439,6 +7445,7 @@ MonoBehaviour:
   - {fileID: -6243809874635537791, guid: b62bcd3ababc9dc41802e199d1d94128, type: 3}
   - {fileID: 7405605054938559205, guid: df66525c675757d489c0714fc8df2d86, type: 3}
   - {fileID: 753480600438954785, guid: 15b901e6099451b4fbecf9862920492a, type: 3}
+  - {fileID: 5742507060382220637, guid: 04756299f1d058144942c9b4364fb38b, type: 3}
 --- !u!114 &1962816413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8273,6 +8280,91 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5579653198548483286, guid: df66525c675757d489c0714fc8df2d86, type: 3}
   m_PrefabInstance: {fileID: 287168037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2045548855
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1833071823}
+    m_Modifications:
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -126.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -299.09155
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -154.16653
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380764, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380765, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: questID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380765, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: questName
+      value: Find A Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380765, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: rewardItem
+      value: 
+      objectReference: {fileID: 5742507060382220637, guid: 04756299f1d058144942c9b4364fb38b, type: 3}
+    - target: {fileID: 4641502867524380765, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: goals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380765, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: goals.Array.data[0].description
+      value: Can you gime me a rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641502867524380765, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: goals.Array.data[0].objects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1474367087}
+    - target: {fileID: 4641502867524380765, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: goals.Array.data[1].objects.Array.data[0]
+      value: 
+      objectReference: {fileID: 429714876}
+    - target: {fileID: 4641502867524380766, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
+      propertyPath: m_Name
+      value: Quest-NPC-2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56636b6df46e19c4ba41496fe3b35d2e, type: 3}
 --- !u!114 &2068364339 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 975716849620116482, guid: ee94fbec96c884a44b25ea75e296ba30, type: 3}
