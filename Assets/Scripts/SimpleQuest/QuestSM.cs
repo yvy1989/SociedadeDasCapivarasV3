@@ -7,7 +7,9 @@ public class QuestSM : MonoBehaviour
     public int questID;
     public string questName;
 
-    public bool complete;
+    //public bool complete;
+    public Item rewardItem;
+    public Transform spawnItemLocation;
 
     public enum QuestProgress { AVAILABLE, ACCEPTED, COMPLETE, DONE }
     public QuestProgress progress;
@@ -52,7 +54,7 @@ public class QuestSM : MonoBehaviour
 
         if (progress == QuestSM.QuestProgress.ACCEPTED)
         {
-            if (complete)
+            if (progress == QuestProgress.COMPLETE)
             {
                 return;
             }
@@ -89,7 +91,7 @@ public class QuestSM : MonoBehaviour
 
             if (CheckAllGoalsComplete())
             {
-                complete = true;
+                //complete = true;
                 progress = QuestProgress.COMPLETE;
             }
         }
@@ -123,27 +125,34 @@ public class QuestSM : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             UIQuestManager questManagerUI = gameObject.GetComponentInParent<UIQuestManager>();
-            if (questManagerUI != null)
+            if (questManagerUI != null && progress != QuestProgress.DONE) //verifica se a quest nao esta finalizada
             {
-                questManagerUI.logPanel.SetActive(true);
-                questManagerUI.LogQuestDescription.text = ""; //apaga o texto do paainel de LOG
-                foreach (var goal in goals)
+                questManagerUI.logPanel.SetActive(true); //ativa o painel de log
+                
+                if(progress != QuestProgress.COMPLETE)
                 {
-                    questManagerUI.LogQuestDescription.text += goal.description;
-                    questManagerUI.LogQuestDescription.text += "\n\n"; //pula duas linhas caso a quest tenha mais de um objetivo
+                    questManagerUI.LogQuestDescription.text = ""; //apaga o texto do paainel de LOG
+                    foreach (var goal in goals)
+                    {
+                        questManagerUI.LogQuestDescription.text += goal.description;
+                        questManagerUI.LogQuestDescription.text += "\n\n"; //pula duas linhas caso a quest tenha mais de um objetivo
+
+                    }
+
+                    questManagerUI.CurrentQuest_id = questID; // passa a ID da quest para o questManagerUI
+                    questManagerUI.Goals = goals.ToArray(); // passa os objetivos para o questManagerUI
+
+                    if (progress == QuestProgress.ACCEPTED) // evita de o painel de log ficar ativo mesmo voce aceitando a quest
+                    {
+                        questManagerUI.logPanel.SetActive(false);
+                    }
+                }
+                else
+                {
+                    //mudar para painel de parabens
+                    questManagerUI.LogQuestDescription.text = "Parabens Voce Terminou a Tarefa\n Receba esta recompensa!";
 
                 }
-
-                questManagerUI.CurrentQuest_id = questID; // passa a ID da quest para o questManagerUI
-                questManagerUI.Goals = goals.ToArray(); // passa os objetivos para o questManagerUI
-
-
-
-                if (progress == QuestProgress.ACCEPTED) // evita de o painel de log ficar ativo mesmo voce aceitando a quest
-                {
-                    questManagerUI.logPanel.SetActive(false);
-                }
-
 
             }            
         }

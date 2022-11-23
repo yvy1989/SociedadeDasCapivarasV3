@@ -6,7 +6,8 @@ using TMPro;
 
 public class UIQuestManager : MonoBehaviour
 {
-    public bool activeQestComplete;
+    //public bool activeQestComplete;
+    public QuestSM.QuestProgress activeQuestProgress;
 
     //ACTIVE PANEL
 
@@ -40,6 +41,16 @@ public class UIQuestManager : MonoBehaviour
             {
                 if(_quest.questID == CurrentQuest_id)
                 {
+                    if(_quest.progress == QuestSM.QuestProgress.COMPLETE)
+                    {
+                        
+                        Debug.Log("Recebeu o item!!");                      ////////////////////////////////////////////////////////////////////////////entregar item de recompensa e passar status para done
+                        SpanwItenByName(_quest.rewardItem, _quest.spawnItemLocation.position);
+
+                        _quest.progress = QuestSM.QuestProgress.DONE;
+                        logPanel.SetActive(false); //desabilita o painel de log
+                        return;
+                    }
                     _quest.progress = QuestSM.QuestProgress.ACCEPTED; //aceita a quest
                 }
             }
@@ -66,7 +77,7 @@ public class UIQuestManager : MonoBehaviour
         }
 
 
-        if(activeQestComplete== false) // entra aqui se a quest ainda nao estiver terminada
+        if(activeQuestProgress!= QuestSM.QuestProgress.COMPLETE || activeQuestProgress != QuestSM.QuestProgress.DONE) // entra aqui se a quest ainda nao estiver terminada
         {
             if (goalPanels != null)
             {
@@ -89,8 +100,12 @@ public class UIQuestManager : MonoBehaviour
                 {
                     if (_quest.questID == CurrentQuest_id)
                     {
-                        activeQestComplete = _quest.complete;
-                        QuestStatusToogle.isOn = activeQestComplete;
+                        activeQuestProgress = _quest.progress;
+                        if(activeQuestProgress == QuestSM.QuestProgress.COMPLETE)
+                        {
+                            QuestStatusToogle.isOn = true;
+                        }
+                        
                     }
                 }
 
@@ -99,5 +114,15 @@ public class UIQuestManager : MonoBehaviour
         
     }
 
+    private void SpanwItenByName(Item itemToReward, Vector3 spawnLocation)
+    {
+        itemToReward = GameManager.instance.itemManager.GetItemByName(itemToReward.data.itemName);
 
+        if (itemToReward != null)
+        {
+
+            Item droppedItem = Instantiate(itemToReward, spawnLocation, Quaternion.identity);
+
+        }
+    }
 }
