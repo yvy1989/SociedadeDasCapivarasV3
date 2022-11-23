@@ -27,6 +27,7 @@ public class UIGoal : MonoBehaviour
         {
             TxtGoalDescription.text = "";
             goalStatusToogle.isOn = false;
+            Destroy(this);
 
         }
         
