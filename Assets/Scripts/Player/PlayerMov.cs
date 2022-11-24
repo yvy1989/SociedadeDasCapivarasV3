@@ -8,9 +8,20 @@ public class PlayerMov : MonoBehaviour
     public float speed;
     public Transform axis;
 
-    Animator anim;
-    public float animSpeedFactor = 1;
+    public bool canWalk = true;
 
+    Animator anim;
+
+
+    private void OnEnable()
+    {
+        Collectable.ItemCollected += startCollectAnim;// inscricao no evento chamado por Collectable
+    }
+
+    private void OnDisable()
+    {
+        Collectable.ItemCollected -= startCollectAnim;
+    }
 
     private void Start()
     {
@@ -19,7 +30,11 @@ public class PlayerMov : MonoBehaviour
 
     public void Update()
     {
-        Move();
+        if (canWalk)
+        {
+            Move();
+        }
+        
         
     }
     void Move()
@@ -53,9 +68,24 @@ public class PlayerMov : MonoBehaviour
             rb.velocity = dir;
         }
 
-        Debug.Log(rb.velocity.magnitude);
-        anim.SetFloat("speed", rb.velocity.magnitude* animSpeedFactor);
 
+        anim.SetFloat("speed", rb.velocity.magnitude);
+
+    }
+
+    void startCollectAnim()
+    {
+        StartCoroutine(delayAnim("pick",1.15f));// delay para iniciar e parar animacao de pegar item
+    }
+
+    IEnumerator delayAnim(string animName,float time)
+    {
+        canWalk = false;
+        anim.SetBool(animName, true);
+        
+        yield return new WaitForSeconds(time);
+        anim.SetBool(animName, false);
+        canWalk = true;
     }
 }
 
