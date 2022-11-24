@@ -7,19 +7,20 @@ public class PlayerMov : MonoBehaviour
     public Rigidbody rb;
     public float speed;
     public Transform axis;
-   
 
-
+    Animator anim;
+    public float animSpeedFactor = 1;
 
 
     private void Start()
     {
-       
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void Update()
     {
         Move();
+        
     }
     void Move()
     {
@@ -52,6 +53,8 @@ public class PlayerMov : MonoBehaviour
             rb.velocity = dir;
         }
 
+        Debug.Log(rb.velocity.magnitude);
+        anim.SetFloat("speed", rb.velocity.magnitude* animSpeedFactor);
 
     }
 }
