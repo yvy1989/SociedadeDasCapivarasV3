@@ -96,15 +96,16 @@ public class UIQuestManager : MonoBehaviour
                 {
                     foreach (var _goalPanel in goalPanels)
                     {
-                        UIGoal uiGoal;
-                        uiGoal = _goalPanel.GetComponent<UIGoal>();
-                        if (uiGoal != null)
+                        if (_goalPanel != null)
                         {
+                            UIGoal uiGoal;
+                            uiGoal = _goalPanel.GetComponent<UIGoal>();
                             if (_goal.goalIndex == uiGoal.goalIndex)
                             {
                                 uiGoal.goalStatusToogle.isOn = _goal.isComplete;
                             }
                         }
+                        
                         
                     }
                 }

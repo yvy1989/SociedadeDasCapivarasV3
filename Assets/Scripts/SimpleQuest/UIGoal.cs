@@ -16,6 +16,11 @@ public class UIGoal : MonoBehaviour
         UIQuestManager.isCurrentQuesDone += resetValues;
     }
 
+    private void OnDisable()
+    {
+        UIQuestManager.isCurrentQuesDone -= resetValues;
+    }
+
     private void Update()
     {
 
@@ -27,7 +32,7 @@ public class UIGoal : MonoBehaviour
         {
             TxtGoalDescription.text = "";
             goalStatusToogle.isOn = false;
-            Destroy(this);
+            Destroy(gameObject);
 
         }
         
