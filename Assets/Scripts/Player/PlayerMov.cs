@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
-    public Rigidbody rb;
-    public float speed;
+    CharacterController characterController;
+
+    public float speed = 100f;
+
+
     public Transform axis;
+    Vector3 dir = Vector3.zero;
 
     public bool canWalk = true;
 
@@ -16,6 +20,7 @@ public class PlayerMov : MonoBehaviour
     private void OnEnable()
     {
         Collectable.ItemCollected += startCollectAnim;// inscricao no evento chamado por Collectable
+
     }
 
     private void OnDisable()
@@ -26,6 +31,7 @@ public class PlayerMov : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        characterController = GetComponent<CharacterController>();
     }
 
     public void Update()
@@ -39,37 +45,42 @@ public class PlayerMov : MonoBehaviour
     }
     void Move()
     {
+        dir = Vector3.zero;
+        //Vector3 dir = Vector3.zero;
         Vector3 rotateTargetZ = axis.transform.forward;
         rotateTargetZ.y = 0;
+
         if (Input.GetKey(KeyCode.W))
         {
             transform.rotation = Quaternion.LookRotation(rotateTargetZ);
-            var dir = transform.forward * speed* Time.deltaTime;
-            rb.velocity = dir;
+            dir = transform.forward;
+            characterController.SimpleMove(dir * Time.deltaTime * speed);
         }
         if (Input.GetKey(KeyCode.S))
         {
             transform.rotation = Quaternion.LookRotation(rotateTargetZ);
-            var dir = transform.forward*-1* speed * Time.deltaTime;
-            rb.velocity = dir;
+            dir = transform.forward * -1 ;
+            characterController.SimpleMove(dir * Time.deltaTime * speed);
         }
+
         Vector3 rotateTargetX = axis.transform.right;
         rotateTargetX.y = 0;
+        
         if (Input.GetKey(KeyCode.D))
         {
             transform.rotation = Quaternion.LookRotation(rotateTargetX);
-            var dir = transform.forward * speed * Time.deltaTime;
-            rb.velocity = dir;
+            dir = transform.forward;
+            characterController.SimpleMove(dir * Time.deltaTime * speed);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.rotation = Quaternion.LookRotation(rotateTargetX*-1);
-            var dir = transform.forward * speed * Time.deltaTime;
-            rb.velocity = dir;
+            transform.rotation = Quaternion.LookRotation(rotateTargetX * -1);
+            dir = transform.forward;
+            characterController.SimpleMove(dir * Time.deltaTime * speed);
         }
 
 
-        anim.SetFloat("speed", rb.velocity.magnitude);
+        anim.SetFloat("speed", dir.magnitude);
 
     }
 
