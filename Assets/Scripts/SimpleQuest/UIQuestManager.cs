@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 using System;
 
 public class UIQuestManager : MonoBehaviour
 {
+    public CinemachineFreeLook cam; //camera do cinemachine para travar o freelock durante o menu de craft
+
     public static Action<bool> isCurrentQuesDone;
 
 
@@ -60,6 +63,7 @@ public class UIQuestManager : MonoBehaviour
 
                         _quest.progress = QuestSM.QuestProgress.DONE;
                         logPanel.SetActive(false); //desabilita o painel de log
+                        freezeOrReleaseCam(false);//libera a camera
                         return;
                     }
                     _quest.progress = QuestSM.QuestProgress.ACCEPTED; //aceita a quest
@@ -142,5 +146,27 @@ public class UIQuestManager : MonoBehaviour
             Item droppedItem = Instantiate(itemToReward, spawnLocation, Quaternion.identity);
 
         }
+    }
+
+
+    public void freezeOrReleaseCam(bool value)
+    {
+        if (value)
+        {
+            if (cam != null)
+            {
+                cam.m_YAxis.m_MaxSpeed = 0;
+                cam.m_XAxis.m_MaxSpeed = 0;
+            }
+        }
+        else
+        {
+            if (cam != null)
+            {
+                cam.m_YAxis.m_MaxSpeed = 5;
+                cam.m_XAxis.m_MaxSpeed = 300;
+            }
+        }
+        
     }
 }

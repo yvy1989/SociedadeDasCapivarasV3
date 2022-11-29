@@ -99,6 +99,7 @@ public class CraftManager : MonoBehaviour
 
             if (CraftMenuPanel!=null) CraftMenuPanel.SetActive(true);
 
+
             if (cam != null) {
                 cam.m_YAxis.m_MaxSpeed = 0;
                 cam.m_XAxis.m_MaxSpeed = 0;

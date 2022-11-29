@@ -128,8 +128,10 @@ public class QuestSM : MonoBehaviour
             if (questManagerUI != null && progress != QuestProgress.DONE) //verifica se a quest nao esta finalizada
             {
                 questManagerUI.logPanel.SetActive(true); //ativa o painel de log
-                
-                if(progress != QuestProgress.COMPLETE)
+                questManagerUI.freezeOrReleaseCam(true);// trava a camera
+
+
+                if (progress != QuestProgress.COMPLETE)
                 {
                     questManagerUI.LogQuestDescription.text = ""; //apaga o texto do paainel de LOG
                     foreach (var goal in goals)
@@ -145,6 +147,7 @@ public class QuestSM : MonoBehaviour
                     if (progress == QuestProgress.ACCEPTED) // evita de o painel de log ficar ativo mesmo voce aceitando a quest
                     {
                         questManagerUI.logPanel.SetActive(false);
+                        questManagerUI.freezeOrReleaseCam(false);//libera a camera
                     }
                 }
                 else
@@ -166,7 +169,8 @@ public class QuestSM : MonoBehaviour
             if (questManagerUI != null)
             {
                 questManagerUI.logPanel.SetActive(false);
-                
+                questManagerUI.freezeOrReleaseCam(false);//libera a camera
+
             }
 
         }
