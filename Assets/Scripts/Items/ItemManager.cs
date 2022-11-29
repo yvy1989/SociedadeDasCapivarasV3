@@ -35,6 +35,10 @@ public class ItemManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Coloca um item na mao do player recebendo um slot onde tem o item como parametro
+    /// </summary>
+    /// <param name="selectedSlot"></param>
     public void setItemToPlayer(Slot_UI selectedSlot)
     {
         if (GameManager.instance.player.isHoldItem == false)
@@ -43,7 +47,10 @@ public class ItemManager : MonoBehaviour
             Item CraftedItem = GameManager.instance.itemManager.GetItemByName(selectedSlot.itemName);
             Item SpawnCraftedItem = Instantiate(CraftedItem, GameManager.instance.player.itemPlaceHolder.position, Quaternion.identity);
             SpawnCraftedItem.transform.forward = GameManager.instance.player.itemPlaceHolder.forward;
+            SpawnCraftedItem.transform.position += new Vector3(0.02f, -0.17f, 0);
+            SpawnCraftedItem.transform.Rotate(90, 90, 0);
             SpawnCraftedItem.transform.SetParent(GameManager.instance.player.itemPlaceHolder);
+
         }
         else
         {
