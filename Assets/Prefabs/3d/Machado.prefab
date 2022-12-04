@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5533226812139317069}
   - component: {fileID: 753480600438954785}
   - component: {fileID: 7650596394419907060}
-  - component: {fileID: 4532635161366200047}
+  - component: {fileID: 6775529201826572200}
   m_Layer: 0
   m_Name: Machado
   m_TagString: Untagged
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272d2595ed198747987508e23c98da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4532635161366200047
+--- !u!114 &6775529201826572200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2169399166559354630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e838717dfef206b49a53fb1c20ec0c4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 706c075a8cdfbbd45997980f1e0ba8d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tipo: Machado

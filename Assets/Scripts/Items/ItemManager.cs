@@ -50,6 +50,8 @@ public class ItemManager : MonoBehaviour
             SpawnCraftedItem.transform.position += new Vector3(0.02f, -0.17f, 0);
             SpawnCraftedItem.transform.Rotate(90, 90, 0);
             SpawnCraftedItem.transform.SetParent(GameManager.instance.player.itemPlaceHolder);
+            SpawnCraftedItem.GetComponent<BoxCollider>().enabled = false;// desativa o colisor do objeto de mao quando ele estiver na mao (for seguravel) e previne de aumentar a quantidade desse item quando pegar outro
+
 
         }
         else

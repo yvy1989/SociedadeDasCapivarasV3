@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eebe89411af9294ca11e0a05c5e02f0, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  itemType: craft
+  itemType: seguravel
   itemName: Axe
   icon: {fileID: 21300000, guid: 6d94b0a4ca7cfd24ab8d426171435806, type: 3}

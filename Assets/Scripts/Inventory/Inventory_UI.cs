@@ -141,9 +141,9 @@ public class Inventory_UI : MonoBehaviour
             
             if (selectedSlot != null)
             {
-                if(selectedSlot.itemType == "craft")
+                if(selectedSlot.itemType == "seguravel")
                 {
-                    Debug.Log("Item de craft");
+                    Debug.Log("Item seguravel");
                     GameManager.instance.itemManager.setItemToPlayer(selectedSlot);
                 }
                 else
