@@ -63,6 +63,12 @@ public class PlayerMov : MonoBehaviour
             characterController.SimpleMove(dir * Time.deltaTime * speed);
         }
 
+        if (Input.GetMouseButton(0) && GetComponent<Player>().isHoldItem == true)
+        {
+            //anim.SetBool("atack",true);
+            StartCoroutine(delayAnim("atack", 1.15f));
+        }
+
         Vector3 rotateTargetX = axis.transform.right;
         rotateTargetX.y = 0;
         
