@@ -23,7 +23,7 @@ public class CraftManager : MonoBehaviour
         p = new Player();
     }
 
-    public bool checkItem(string itemName, int itemAmount)// verifica se o player possui o item para o craft
+    public bool checkItem(string itemName, int itemAmount)// BUG************** o player perde o item mesmo sem craftar
     {
         if (p.inventory != null)
         {
@@ -31,18 +31,32 @@ public class CraftManager : MonoBehaviour
             {
                 if (_slot.itemName == itemName && _slot.count>=itemAmount)
                 {
-                    for (int i = 0; i < itemAmount; i++)
-                    {
-                        _slot.RemoveItem();
-                    }
+
                     Debug.Log("Tem os itens");
                     
                     return true;
                 }
             }
         }
-        Debug.Log("Nao tem os itens");
+        Debug.Log(string.Format("Nao possui {0}, ou a quantidade nao e suficiente", itemName));
         return false;
+    }
+
+    public void checkAndRemoveItem(string itemName, int itemAmount)// TESTE
+    {
+        if (p.inventory != null)
+        {
+            foreach (var _slot in p.inventory.slots)
+            {
+                if (_slot.itemName == itemName && _slot.count >= itemAmount)
+                {
+                    for (int i = 0; i < itemAmount; i++)
+                    {
+                        _slot.RemoveItem();
+                    }
+                }
+            }
+        }
     }
 
     public void craftItem(string itemName)
@@ -53,6 +67,9 @@ public class CraftManager : MonoBehaviour
                 {
                     if (checkItem("Log", 2) && checkItem("Rock", 1))
                     {
+                        checkAndRemoveItem("Log", 2);   ///teste
+                        checkAndRemoveItem("Rock", 1);  ///teste
+
                         Debug.Log("CRIOU MACHADO");
                         SpanwItenByName(itemName);
                         SoudManager.PlaySound(SoudManager.SoudType.Craft);
