@@ -66,7 +66,7 @@ public class PlayerMov : MonoBehaviour
         if (Input.GetMouseButton(0) && GetComponent<Player>().isHoldItem == true)
         {
             //anim.SetBool("atack",true);
-            StartCoroutine(delayAnim("atack", 1.15f));
+            Atack();
         }
 
         Vector3 rotateTargetX = axis.transform.right;
@@ -90,6 +90,20 @@ public class PlayerMov : MonoBehaviour
 
     }
 
+    private void Atack()
+    {
+
+        StartCoroutine(delayAnim("atack", 1.15f));
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1f))
+        {
+            Debug.Log("Did Hit "+ hit.transform.name);
+            hit.transform.GetComponent<Animator>().SetBool("cut", true);
+            hit.transform.GetComponent<SpawnItems>().SpanwItem();
+        }
+    }
+
     void startCollectAnim()
     {
         StartCoroutine(delayAnim("pick",1.15f));// delay para iniciar e parar animacao de pegar item
@@ -104,6 +118,7 @@ public class PlayerMov : MonoBehaviour
         anim.SetBool(animName, false);
         canWalk = true;
     }
+
 }
 
 
