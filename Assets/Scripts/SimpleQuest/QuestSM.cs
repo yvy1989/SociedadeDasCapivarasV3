@@ -125,6 +125,9 @@ public class QuestSM : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             UIQuestManager questManagerUI = gameObject.GetComponentInParent<UIQuestManager>();
+
+            GetComponentInChildren<Animator>().SetBool("isTalking", true);
+
             if (questManagerUI != null && progress != QuestProgress.DONE) //verifica se a quest nao esta finalizada
             {
                 questManagerUI.logPanel.SetActive(true); //ativa o painel de log
@@ -166,6 +169,8 @@ public class QuestSM : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             UIQuestManager questManagerUI = gameObject.GetComponentInParent<UIQuestManager>();
+
+            GetComponentInChildren<Animator>().SetBool("isTalking", false);
             if (questManagerUI != null)
             {
                 questManagerUI.logPanel.SetActive(false);
