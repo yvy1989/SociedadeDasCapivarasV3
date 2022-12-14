@@ -15,7 +15,7 @@ public class PlayerMov : MonoBehaviour
     public bool canWalk = true;
 
     Animator anim;
-
+    
 
     private void OnEnable()
     {
@@ -39,6 +39,7 @@ public class PlayerMov : MonoBehaviour
         if (canWalk)
         {
             Move();
+           
         }
         
         
@@ -52,15 +53,17 @@ public class PlayerMov : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.rotation = Quaternion.LookRotation(rotateTargetZ);
+            transform.rotation =Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateTargetZ),Time.deltaTime*5);
             dir = transform.forward;
             characterController.SimpleMove(dir * Time.deltaTime * speed);
+             SoudManager.PlaySound(SoudManager.SoudType.PlayerMove);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.rotation = Quaternion.LookRotation(rotateTargetZ);
+            transform.rotation =Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateTargetZ),Time.deltaTime*5);
             dir = transform.forward * -1 ;
             characterController.SimpleMove(dir * Time.deltaTime * speed);
+             SoudManager.PlaySound(SoudManager.SoudType.PlayerMove);
         }
 
         if (Input.GetMouseButton(0) && GetComponent<Player>().isHoldItem == true)
@@ -74,15 +77,17 @@ public class PlayerMov : MonoBehaviour
         
         if (Input.GetKey(KeyCode.D))
         {
-            transform.rotation = Quaternion.LookRotation(rotateTargetX);
+             transform.rotation =Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateTargetX),Time.deltaTime*5);
             dir = transform.forward;
             characterController.SimpleMove(dir * Time.deltaTime * speed);
+             SoudManager.PlaySound(SoudManager.SoudType.PlayerMove);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.rotation = Quaternion.LookRotation(rotateTargetX * -1);
+            transform.rotation =Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateTargetX*-1),Time.deltaTime*5);
             dir = transform.forward;
             characterController.SimpleMove(dir * Time.deltaTime * speed);
+            SoudManager.PlaySound(SoudManager.SoudType.PlayerMove);
         }
 
 
