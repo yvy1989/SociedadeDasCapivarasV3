@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+ 
     public static GameManager instance;
 
     public Player player;
@@ -25,12 +26,16 @@ public class GameManager : MonoBehaviour
 
         itemManager = GetComponent<ItemManager>();
         SoudManager.Initialize();
+        
+       
     }
+    
     public SoundAudioClip[] soundAudioClips;
     [System.Serializable]
     public class SoundAudioClip
     {
         public SoudManager.SoudType sound;
         public AudioClip audioClip;
+        
     }
 }

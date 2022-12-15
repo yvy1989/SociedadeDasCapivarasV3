@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class AttackState : State
 {
     private float attackRotationSpeed = 2f;
+    bool CanaudioAtk = true;
+    float timeAudioAtk;
 
     public AttackState(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, Vector3 _initPos, AI _ai)
                         : base(_npc, _agent, _anim, _player, _initPos, _ai)
@@ -17,7 +19,16 @@ public class AttackState : State
     public override void Enter()
     {
         //Debug.Log("Attack");
-        SoudManager.PlaySound(SoudManager.SoudType.JaguarAttack);
+        if(CanaudioAtk){
+            SoudManager.PlaySound(SoudManager.SoudType.JaguarAttack);
+            CanaudioAtk=false;
+        }else{
+            if(timeAudioAtk>60){
+                CanaudioAtk=true;
+            }
+
+        }
+       
         attackRotationSpeed = ai.attackRotationSpeed;
 
         anim.SetTrigger("isAttacking");
@@ -27,6 +38,11 @@ public class AttackState : State
 
     public override void Update()
     {
+        if(CanaudioAtk==false){
+            timeAudioAtk+=Time.deltaTime;
+        }else{
+            timeAudioAtk=0;
+        }
         Vector3 direction = player.transform.position - npc.transform.position;
         float angle = Vector3.Angle(direction, npc.transform.forward);
         direction.y = 0;

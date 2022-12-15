@@ -19,6 +19,7 @@ public static class SoudManager
     {
         soundTimeDictionary = new Dictionary<SoudType, float>();
         soundTimeDictionary[SoudType.PlayerMove] = 0f;
+      
     }
     public static void PlaySound(SoudType sound)
     {  
@@ -26,7 +27,13 @@ public static class SoudManager
         {
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-            audioSource.PlayOneShot(GetAudioClip(sound));
+       
+            if(sound==SoudManager.SoudType.PlayerMove){
+                audioSource.volume=0.1f;
+                audioSource.PlayOneShot(GetAudioClip(sound));
+            }else{   
+                  audioSource.PlayOneShot(GetAudioClip(sound));
+            }
         }
     }
     private static bool CanPlaySound(SoudType sound)
@@ -69,9 +76,11 @@ public static class SoudManager
                 return soundAudioClip.audioClip;
             }
         }
+        
         Debug.LogError("Sound " + sound + " Not Found!");
 
         return null;
     }
+  
 }
 
